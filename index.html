@@ -7,92 +7,133 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Coutanche</title>
     <style>
+      /* Universal box-sizing for consistent layout across all elements */
       * {
-        box-sizing: border-box; /* Changed to border-box for easier layout */
+        box-sizing: border-box;
       }
       html {
-        height: 100%;
+        height: 100%; /* Ensures HTML takes full viewport height */
       }
       body {
         font-family: "Courier New", "Courier", monospace;
         font-size: 24px;
-        height: 100%;
+        height: 100%; /* Ensures body takes full HTML height */
         margin: 0;
         padding: 0;
-        overflow: hidden; /* Hide scrollbars if content overflows during animation */
+        overflow: hidden; /* Prevents scrollbars from appearing, especially important for marquee */
+        position: relative; /* Essential for positioning the absolute bottom marquee */
       }
+
+      /* Styles for the main content (Couta@nche.uk) */
       .container {
-        height: 100%;
+        height: 100%; /* Allows main content to fill remaining space */
         position: relative;
-        display: flex; /* Use flexbox for centering content */
-        flex-direction: column; /* Arrange content vertically */
-        justify-content: center; /* Center content vertically */
-        align-items: center; /* Center content horizontally */
+        display: flex; /* Uses Flexbox for centering */
+        flex-direction: column; /* Stacks items vertically */
+        justify-content: center; /* Centers content vertically */
+        align-items: center; /* Centers content horizontally */
       }
       .content {
         text-align: center;
-        margin-bottom: 20px; /* Add some space below the email */
-        white-space: nowrap; /* Prevent email from wrapping */
+        margin-bottom: 20px; /* Provides space above the marquee */
+        white-space: nowrap; /* Prevents the email text from wrapping */
       }
 
-      /* Marquee Styles */
+      /* Wrapper for the bottom marquee to position it absolutely at the bottom */
+      .bottom-marquee-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 15px 0; /* Add vertical padding around the marquee */
+        background-color: #f0f0f0; /* Slightly different background for distinction */
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1); /* Shadow to lift it slightly */
+      }
+
+      /* Marquee Styles - Similar to before, but now within its new wrapper */
       .marquee-container {
         width: 100%;
-        overflow: hidden; /* Hide content outside the container */
-        white-space: nowrap; /* Prevent items from wrapping to the next line */
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow for visual separation */
-        padding: 10px 0;
-        background-color: #f8f8f8;
+        overflow: hidden; /* Hides content outside the container */
+        white-space: nowrap; /* Keeps all marquee items on one line */
+        padding: 0; /* Reset padding, as wrapper handles it */
       }
 
       .marquee-content {
-        display: inline-block; /* Keep all links on one line */
-        padding-left: 100%; /* Start the content off-screen to the right */
-        animation: scrolling-marquee 120s linear infinite; /* Animation definition, adjusted for slower scroll */
+        display: inline-block; /* Essential for horizontal scrolling */
+        padding-left: 100%; /* Starts the content completely off-screen to the right */
+        animation: scrolling-marquee 180s linear infinite; /* Animation for continuous scroll (adjusted to 180s for very slow) */
+        /* Increased duration to 180s for a significantly slower scroll */
       }
 
       .marquee-content a {
-        display: inline-block;
-        padding: 0 25px; /* More spacing between links */
-        color: #007bff; /* Link color */
-        text-decoration: none; /* Remove underline */
-        font-size: 18px; /* Slightly smaller font for links */
-        transition: color 0.3s ease; /* Smooth color transition on hover */
+        display: inline-flex; /* Use inline-flex to align image and text */
+        align-items: center; /* Vertically centers content within the link */
+        padding: 0 40px; /* Generous spacing between individual links */
+        color: #007bff; /* Standard link blue color */
+        text-decoration: none; /* Remove default underline */
+        font-size: 18px; /* Slightly smaller font size for readability */
+        transition: color 0.3s ease; /* Smooth transition for hover effect */
       }
 
       .marquee-content a:hover {
-        text-decoration: underline;
+        text-decoration: underline; /* Add underline on hover */
         color: #0056b3; /* Darker blue on hover */
       }
 
-      /* Keyframe animation for scrolling */
+      /* Styling for images within the marquee links */
+      .marquee-content img {
+        width: 40px; /* Fixed width for the image */
+        height: 40px; /* Fixed height for the image */
+        border-radius: 50%; /* Makes images circular */
+        object-fit: cover; /* Ensures image covers the area without distortion */
+        margin-right: 10px; /* Space between image and text */
+        border: 1px solid rgba(0,0,0,0.1); /* Subtle border for image */
+      }
+
+      /* Keyframe animation for the scrolling effect */
       @keyframes scrolling-marquee {
         0% {
-          transform: translateX(0%);
+          transform: translateX(0%); /* Start at original position */
         }
         100% {
-          transform: translateX(-100%);
+          transform: translateX(-100%); /* Move left by its full width */
         }
       }
 
-      /* Responsive adjustments */
+      /* Responsive Adjustments for smaller screens */
       @media (max-width: 768px) {
         body {
-          font-size: 20px;
+          font-size: 20px; /* Adjust body font size */
         }
         .marquee-content a {
-          font-size: 16px;
-          padding: 0 15px;
+          font-size: 16px; /* Adjust link font size */
+          padding: 0 25px; /* Reduce spacing between links */
+        }
+        .marquee-content img {
+          width: 35px; /* Smaller image size on tablets */
+          height: 35px;
+          margin-right: 8px;
+        }
+        .bottom-marquee-wrapper {
+          padding: 10px 0;
         }
       }
 
       @media (max-width: 480px) {
         body {
-          font-size: 18px;
+          font-size: 18px; /* Further reduce body font size */
         }
         .marquee-content a {
-          font-size: 14px;
-          padding: 0 10px;
+          font-size: 14px; /* Further reduce link font size */
+          padding: 0 15px; /* Minimal spacing for very small screens */
+        }
+        .marquee-content img {
+          width: 30px; /* Even smaller image size on phones */
+          height: 30px;
+          margin-right: 5px;
+        }
+        .bottom-marquee-wrapper {
+          padding: 8px 0;
         }
       }
     </style>
@@ -100,62 +141,109 @@
   <body>
     <div class="container">
       <div class="content">Couta@nche.uk</div>
+    </div>
+
+    <!-- New wrapper for the marquee at the very bottom of the page -->
+    <div class="bottom-marquee-wrapper">
       <div class="marquee-container">
         <div class="marquee-content">
-          <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">Celebrities Most At Risk From Deepfakes</a>
-          <a href="https://patch.com/new-jersey/across-nj/nj-has-second-worst-roads-u-s-survey-claims-report" target="_blank" rel="noopener noreferrer">New Jersey Has Second Worst Roads in U.S.</a>
-          <a href="https://www.msn.com/en-us/money/careersandeducation/these-are-the-10-highest-paying-jobs-that-don-t-require-a-traditional-degree-according-to-a-new-report/ar-AA1wxy69" target="_blank" rel="noopener noreferrer">10 Highest Paying Jobs Without a Traditional Degree</a>
-          <a href="https://www.mirror.co.uk/lifestyle/motoring/car-reviews/jaguar-type-00-labelled-ugliest-34236779" target="_blank" rel="noopener noreferrer">Jaguar Type 00 Labelled Ugliest</a>
-          <a href="https://www.msn.com/en-gb/news/newsbirmingham/british-gas-octopus-eon-edf-and-ovo-customers-to-get-money-for-taking-shorter-showers/ar-AA1tpxnn" target="_blank" rel="noopener noreferrer">Get Money for Taking Shorter Showers</a>
-          <a href="https://www.express.co.uk/news/uk/1966522/uk-town-dirtiest-takeaways-list" target="_blank" rel="noopener noreferrer">UK Town With Dirtiest Takeaways Revealed</a>
-          <a href="https://www.msn.com/en-us/health/other/americas-worst-addictions-revealed-as-cigarettes-and-alcohol-overtaken/ar-AA1rKs8Z" target="_blank" rel="noopener noreferrer">America's Worst Addictions Revealed</a>
-          <a href="https://www.yahoo.com/news/gold-rush-2-0-colorado-182444867.html" target="_blank" rel="noopener noreferrer">Gold Rush 2.0: Colorado is Still a Gold-Producing State</a>
-          <a href="https://eu.dispatch.com/story/news/local/2024/09/21/toledo-akron-dayton-columbus-ohio-rent-cheap-living-cost/75021012007/" target="_blank" rel="noopener noreferrer">Ohio Cities Where Rent is Cheapest</a>
-          <a href="https://www.express.co.uk/finance/personalfinance/1950958/99p-tin-foil-hack-keeps-you-warm-does-much-turning-heating-up" target="_blank" rel="noopener noreferrer">99p Tin Foil Hack Keeps You Warm</a>
-          <a href="https://www.msn.com/en-us/travel/news/report-shows-arkansans-in-the-top-10-for-spending-the-most-on-casino-gambling/ar-AA1qhxfj" target="_blank" rel="noopener noreferrer">Arkansans Among Top 10 For Casino Gambling Spending</a>
-          <a href="https://news.yahoo.com/news/10-worst-states-move-why-130014619.html" target="_blank" rel="noopener noreferrer">The 10 Worst States to Move To</a>
-          <a href="https://www.msn.com/en-us/money/careersandeducation/america-s-10-highest-paying-jobs-and-eye-watering-salaries-revealed/ar-BB1r3kRD" target="_blank" rel="noopener noreferrer">America's 10 Highest Paying Jobs Revealed</a>
-          <a href="https://www.india.com/news/world/porn-tops-list-of-americas-addiction-epidemic-across-all-50-states-details-inside-mental-health-usa-google-search-alcohol-social-media-7120805/" target="_blank" rel="noopener noreferrer">Porn Tops List of America's Addiction Epidemic</a>
-          <a href="https://nypost.com/2024/07/22/real-estate/new-yorkers-pay-164-more-in-rent-than-the-average-american/" target="_blank" rel="noopener noreferrer">New Yorkers Pay 164% More in Rent</a>
-          <a href="https://www.msn.com/en-us/health/nutrition/don-t-eat-that-what-s-the-worst-thing-to-order-at-fast-food-restaurants/ar-BB1ptViH" target="_blank" rel="noopener noreferrer">The Worst Thing to Order at Fast Food Restaurants</a>
-          <a href="https://jornaleconomico.sapo.pt/noticias/euro2024-portugal-e-a-terceira-selecao-mais-valiosa-da-competicao/" target="_blank" rel="noopener noreferrer">Euro 2024: Portugal is the Third Most Valuable Selection</a>
-          <a href="https://www.msn.com/en-us/travel/news/these-texas-lakes-made-list-of-most-instagrammable-in-north-america/ar-BB1o72wg" target="_blank" rel="noopener noreferrer">These Texas Lakes Made List of Most Instagrammable</a>
-          <a href="https://www.manchestereveningnews.co.uk/news/greater-manchester-news/five-crucial-health-warning-signs-29238857" target="_blank" rel="noopener noreferrer">Five Crucial Health Warning Signs Men Should Check For</a>
-          <a href="https://www.msn.com/en-us/news/technology/google-searches-may-reveal-america-s-most-hated-day-of-the-week/ar-BB1mRHA8" target="_blank" rel="noopener noreferrer">Google Searches May Reveal America's Most Hated Day of the Week</a>
-          <a href="https://www.msn.com/en-us/sports/nfl/new-orleans-saints-have-best-touchdown-song-in-the-nfl-study-says/ar-BB1mFo68" target="_blank" rel="noopener noreferrer">New Orleans Saints Have Best Touchdown Song in the NFL</a>
-          <a href="https://www.msn.com/en-us/travel/news/this-ny-airport-ranks-one-of-the-worst-for-delayed-flights/ar-BB1mnjpe" target="_blank" rel="noopener noreferrer">This NY Airport Ranks One of the Worst for Delayed Flights</a>
-          <a href="https://www.msn.com/en-us/money/realestate/study-louisiana-among-most-affordable-us-states-to-buy-a-home/ar-AA1noWei" target="_blank" rel="noopener noreferrer">Study: Louisiana Among Most Affordable US States to Buy a Home</a>
-          <a href="https://www.dailystar.co.uk/love-sex/top-five-foods-boost-libido-32682706" target="_blank" rel="noopener noreferrer">Top Five Foods to Boost Libido</a>
-          <a href="https://www.msn.com/en-gb/news/uknews/greater-anglia-crowned-the-most-reliable-rail-operator-in-the-country/ar-BB1laso0" target="_blank" rel="noopener noreferrer">Greater Anglia Crowned Most Reliable Rail Operator</a>
-          <a href="https://www.msn.com/en-us/money/careersandeducation/new-study-reveals-state-with-the-best-work-life-balance-where-they-work-less-than-34-hours-a-week/ar-BB1ldwhP" target="_blank" rel="noopener noreferrer">New Study Reveals State With Best Work-Life Balance</a>
-          <a href="https://www.yahoo.com/news/caribbean-named-most-popular-travel-194642395.html" target="_blank" rel="noopener noreferrer">Caribbean Named Most Popular Travel Destination</a>
-          <a href="https://www.msn.com/en-us/news/us/study-finds-oregon-washington-among-top-10-states-with-expensive-yards/ar-BB1j803i" target="_blank" rel="noopener noreferrer">Study Finds Oregon, Washington Among Top 10 States With Expensive Yards</a>
-          <a href="https://www.msn.com/en-xl/sports/nfl/chiefs-see-34-surge-in-fans-thanks-to-travis-kelce-and-taylor-swift/ar-BB1iF530" target="_blank" rel="noopener noreferrer">Chiefs See 34% Surge in Fans Thanks to Travis Kelce and Taylor Swift</a>
-          <a href="https://medium.com/secure-words/the-most-common-and-weak-passwords-on-the-internet-in-2024-so-far-85ca1266cafe" target="_blank" rel="noopener noreferrer">The Most Common and Weak Passwords on the Internet in 2024</a>
-          <a href="https://www.timeout.com/uk/news/revealed-the-uk-city-where-youre-most-likely-to-get-parking-fines-021524" target="_blank" rel="noopener noreferrer">The UK City Where You're Most Likely to Get Parking Fines</a>
-          <a href="https://www.msn.com/en-gb/money/technology/worst-online-passwords-research-has-found-these-are-the-10-passwords-easiest-to-crack-by-criminals/ar-BB1hYkeV" target="_blank" rel="noopener noreferrer">Worst Online Passwords: Easiest to Crack by Criminals</a>
-          <a href="https://www.msn.com/en-us/sports/nfl/illinois-favorite-super-bowl-food-revealed-in-new-study-and-its-not-chicken-wings/ar-BB1i3aJe" target="_blank" rel="noopener noreferrer">Illinois' Favorite Super Bowl Food Revealed</a>
-          <a href="https://www.msn.com/en-us/tv/news/despite-harsh-critics-netflix-fans-deem-jennifer-aniston-s-murder-mystery-one-of-the-most-underrated-shows-ever/ar-BB1hXIUC" target="_blank" rel="noopener noreferrer">Netflix Fans Deem Jennifer Aniston's Movie Most Underrated</a>
-          <a href="https://www.msn.com/en-gb/money/other/living-in-cambridgeshire-youre-over-580-more-likely-to-be-hit-with-a-fine/ar-BB1hY38g" target="_blank" rel="noopener noreferrer">Living in Cambridgeshire? You're Over 580% More Likely to Be Hit With a Fine</a>
-          <a href="https://www.msn.com/en-us/sports/nfl/nfl-commissioner-shocked-by-allegations-of-super-bowl-rigged-in-favour-of-taylor-swift-and-chiefs/ar-BB1hPsRM" target="_blank" rel="noopener noreferrer">NFL Commissioner Shocked by "Rigged" Super Bowl Allegations</a>
-          <a href="https://www.msn.com/en-us/money/careers/why-a-study-says-illinois-is-the-third-best-state-to-move-to-in-the-u-s/ar-BB1oQx8T" target="_blank" rel="noopener noreferrer">Illinois: Third Best State to Move To</a>
-          <a href="https://www.msn.com/en-gb/money/other/this-part-of-britain-follows-london-as-the-next-best-place-for-finance-grads/ar-AA1mKwL1" target="_blank" rel="noopener noreferrer">This Part of Britain is the Next Best Place for Finance Grads After London</a>
-          <a href="https://www.msn.com/en-us/news/technology/watch-what-you-download-these-apps-share-the-most-personal-data/ar-AA1kCrKf" target="_blank" rel="noopener noreferrer">Watch What You Download: These Apps Share The Most Personal Data</a>
-          <a href="https://www.msn.com/en-us/news/other/blazing-deals-ohio-ranks-as-6th-cheapest-state-for-medical-marijuana-study-says/ar-AA1iIh9f" target="_blank" rel="noopener noreferrer">Ohio Ranks as 6th Cheapest State for Medical Marijuana</a>
-          <a href="https://highschool.si.com/national/2023/10/17/colleges-which-produce-the-highest-earning-nfl-players" target="_blank" rel="noopener noreferrer">Colleges Which Produce The Highest Earning NFL Players</a>
-          <a href="https://www.lanereport.com/168558/2023/10/kentucky-ranks-8-as-americas-most-relaxed-state/" target="_blank" rel="noopener noreferrer">Kentucky Ranks 8th as America's Most Relaxed State</a>
-          <a href="https://news.yahoo.com/rats-boston-ranks-list-most-172745047.html" target="_blank" rel="noopener noreferrer">Rats! Boston Ranks on List of Most Pest-Infested Cities</a>
-          <a href="https://www.msn.com/pt-pt/desporto/other/estes-s%C3%A3o-os-pa%C3%ADses-que-formam-os-jogadores-de-futebol-mais-valiosos-portugal-ocupa-a-s%C3%A9tima-posi%C3%A7%C3%A3o-do-ranking/ar-AA1eRluA" target="_blank" rel="noopener noreferrer">These Countries Form the Most Valuable Football Players</a>
-          <a href="https://uk.sports.yahoo.com/news/nick-kyrgios-heads-trio-tennis-082906383.html" target="_blank" rel="noopener noreferrer">Nick Kyrgios Heads Trio of Tennis Stars Among Australia's Most Famous Athletes</a>
-          <a href="https://www.dailymail.co.uk/sport/football/article-12322135/Sam-Kerr-comes-fourth-list-Australias-famous-athletes-heres-beat-Matildas-World-Cup-superstar-popularity-stakes.html" target="_blank" rel="noopener noreferrer">Sam Kerr Comes Fourth in List of Australia's Famous Athletes</a>
-          <a href="https://www.yahoo.com/news/indiana-ranks-highest-nation-seeking-091113258.html" target="_blank" rel="noopener noreferrer">Indiana Ranks Highest in the Nation for Seeking Substance Rehabilitation</a>
-          <a href="https://www.msn.com/en-us/money/other/analysis-nevada-home-appreciation-doubles-since-2016-second-highest-in-nation/ar-AA1dzvLB" target="_blank" rel="noopener noreferrer">Nevada Home Appreciation Doubles Since 2016</a>
-          <a href="https://www.itv.com/news/westcountry/2023-05-29/the-parts-of-the-south-west-with-the-highest-mot-failure-rates-in-the-uk" target="_blank" rel="noopener noreferrer">Parts of South West With Highest MOT Failure Rates</a>
-          <a href="https://www.msn.com/en-gb/money/other/cost-effective-ways-to-add-value-to-your-home-can-increase-value-by-58-000/ar-AA1b22fR" target="_blank" rel="noopener noreferrer">Cost-Effective Ways to Add Value to Your Home</a>
-          <a href="https://www.msn.com/en-us/travel/tripideas/new-river-gorge-is-highest-rated-national-park-in-america/ar-AA19y6pS" target="_blank" rel="noopener noreferrer">New River Gorge is Highest Rated National Park in America</a>
-          <a href="https://www.msn.com/en-us/health/fitness/massachusetts-ranked-as-the-most-fitness-obsessed-state-according-to-new-research/ar-AA17ItsG" target="_blank" rel="noopener noreferrer">Massachusetts Ranked as the Most Fitness-Obsessed State</a>
-          <a href="https://africa.businessinsider.com/local/markets/nigeria-ranks-number-one-globally-for-cryptocurrency-usage-and-ownership/xynm1cw" target="_blank" rel="noopener noreferrer">Nigeria Ranks Number One Globally for Cryptocurrency Usage</a>
-          <a href="https://www.msn.com/en-us/sports/nfl/shakira-and-jenifer-lopezs-halftime-show-tops-among-the-most-viewed-super-bowl-moments-of-all-time/ar-AA16XKCP" target="_blank" rel="noopener noreferrer">Shakira and Jennifer Lopez's Halftime Show Tops Most Viewed Super Bowl Moments</a>
+          <!-- Curated selection of varied and interesting placements with images -->
+          <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Deepfake" alt="Deepfake icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Celebrities at Risk of Deepfakes
+          </a>
+          <a href="https://patch.com/new-jersey/across-nj/nj-has-second-worst-roads-u-s-survey-claims-report" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Roads" alt="Roads icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            New Jersey's Second Worst Roads
+          </a>
+          <a href="https://www.msn.com/en-us/money/careersandeducation/these-are-the-10-highest-paying-jobs-that-don-t-require-a-traditional-degree-according-to-a-new-report/ar-AA1wxy69" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Jobs" alt="Jobs icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Top 10 Highest Paying Jobs Without a Degree
+          </a>
+          <a href="https://www.mirror.co.uk/lifestyle/motoring/car-reviews/jaguar-type-00-labelled-ugliest-34236779" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Jaguar" alt="Jaguar icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Jaguar Type 00 Labelled "Ugliest"
+          </a>
+          <a href="https://www.msn.com/en-gb/news/newsbirmingham/british-gas-octopus-eon-edf-and-ovo-customers-to-get-money-for-taking-shorter-showers/ar-AA1tpxnn" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Showers" alt="Showers icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Get Money for Shorter Showers
+          </a>
+          <a href="https://www.express.co.uk/news/uk/1966522/uk-town-dirtiest-takeaways-list" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Takeaways" alt="Takeaways icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            UK Town with Britain's Dirtiest Takeaways
+          </a>
+          <a href="https://www.msn.com/en-us/health/other/americas-worst-addictions-revealed-as-cigarettes-and-alcohol-overtaken/ar-AA1rKs8Z" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Addiction" alt="Addiction icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            America's Worst Addictions Revealed
+          </a>
+          <a href="https://www.yahoo.com/news/gold-rush-2-0-colorado-182444867.html" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Gold" alt="Gold icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Gold Rush 2.0: Colorado Still a Gold-Producing State
+          </a>
+          <a href="https://eu.dispatch.com/story/news/local/2024/09/21/toledo-akron-dayton-columbus-ohio-rent-cheap-living-cost/75021012007/" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Rent" alt="Rent icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Ohio Cities Where Rent is Cheapest
+          </a>
+          <a href="https://www.express.co.uk/finance/personalfinance/1950958/99p-tin-foil-hack-keeps-you-warm-does-much-turning-heating-up" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Tinfoil" alt="Tinfoil icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            99p Tin Foil Hack Keeps You Warm
+          </a>
+          <a href="https://www.msn.com/en-us/travel/news/report-shows-arkansans-in-the-top-10-for-spending-the-most-on-casino-gambling/ar-AA1qhxfj" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Gambling" alt="Gambling icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Arkansans Among Top 10 for Casino Gambling
+          </a>
+          <a href="https://news.yahoo.com/news/10-worst-states-move-why-130014619.html" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Moving" alt="Moving icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            The 10 Worst States to Move To
+          </a>
+          <a href="https://medium.com/secure-words/the-most-common-and-weak-passwords-on-the-internet-in-2024-so-far-85ca1266cafe" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Passwords" alt="Passwords icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Most Common and Weak Passwords of 2024
+          </a>
+          <a href="https://www.timeout.com/uk/news/revealed-the-uk-city-where-youre-most-likely-to-get-parking-fines-021524" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Parking" alt="Parking icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            UK City Most Likely to Get Parking Fines
+          </a>
+          <a href="https://www.msn.com/en-us/sports/nfl/new-orleans-saints-have-best-touchdown-song-in-the-nfl-study-says/ar-BB1mFo68" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=NFL" alt="NFL icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            New Orleans Saints Have Best NFL Touchdown Song
+          </a>
+          <a href="https://www.msn.com/en-us/money/careersandeducation/new-study-reveals-state-with-the-best-work-life-balance-where-they-work-less-than-34-hours-a-week/ar-BB1ldwhP" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Work-Life" alt="Work-Life icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            State With the Best Work-Life Balance
+          </a>
+          <a href="https://www.msn.com/en-us/news/us/study-finds-oregon-washington-among-top-10-states-with-expensive-yards/ar-BB1j803i" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Yards" alt="Yards icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Oregon & Washington: Expensive Yards
+          </a>
+          <a href="https://www.msn.com/en-xl/sports/nfl/chiefs-see-34-surge-in-fans-thanks-to-travis-kelce-and-taylor-swift/ar-BB1iF530" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Swift" alt="Taylor Swift icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Chiefs See Fan Surge Thanks to Kelce & Swift
+          </a>
+          <a href="https://www.msn.com/en-us/news/other/blazing-deals-ohio-ranks-as-6th-cheapest-state-for-medical-marijuana-study-says/ar-AA1iIh9f" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Marijuana" alt="Marijuana icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Ohio Ranks 6th Cheapest for Medical Marijuana
+          </a>
+          <a href="https://www.msn.com/en-us/health/fitness/massachusetts-ranked-as-the-most-fitness-obsessed-state-according-to-new-research/ar-AA17ItsG" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Fitness" alt="Fitness icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Massachusetts: Most Fitness-Obsessed State
+          </a>
+          <a href="https://africa.businessinsider.com/local/markets/nigeria-ranks-number-one-globally-for-cryptocurrency-usage-and-ownership/xynm1cw" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Crypto" alt="Crypto icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Nigeria Ranks #1 for Cryptocurrency Usage
+          </a>
+          <a href="https://www.msn.com/en-us/sports/nfl/shakira-and-jenifer-lopezs-halftime-show-tops-among-the-most-viewed-super-bowl-moments-of-all-time/ar-AA16XKCP" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Halftime" alt="Halftime show icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Shakira & J.Lo Halftime Show: Most Viewed
+          </a>
+          <a href="https://www.msn.com/en-us/health/nutrition/don-t-eat-that-what-s-the-worst-thing-to-order-at-fast-food-restaurants/ar-BB1ptViH" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=FastFood" alt="Fast Food icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Worst Fast Food to Order
+          </a>
+          <a href="https://www.msn.com/en-us/tv/news/despite-harsh-critics-netflix-fans-deem-jennifer-aniston-s-murder-mystery-one-of-the-most-underrated-shows-ever/ar-BB1hXIUC" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/40x40/DDDDDD/000000?text=Netflix" alt="Netflix icon" onerror="this.onerror=null;this.src='https://placehold.co/40x40/DDDDDD/000000?text=IMG';" />
+            Netflix Fans Deem Aniston's Film Most Underrated
+          </a>
         </div>
       </div>
     </div>
