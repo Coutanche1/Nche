@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Coutanche</title>
-    <!-- Favicon links go here -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/Nche/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/Nche/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/Nche/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/Nche/favicon_io/site.webmanifest">
+    <!-- Favicon links - Corrected to absolute URLs for GitHub Pages custom domain -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://nche.uk/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://nche.uk/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://nche.uk/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="https://nche.uk/favicon_io/site.webmanifest">
     <!-- End of Favicon links -->
     <style>
       /* Universal box-sizing for consistent layout across all elements */
@@ -26,7 +26,7 @@
         height: 100%; /* Ensures body takes full HTML height */
         margin: 0;
         padding: 0;
-        overflow: hidden; /* Prevents scrollbars from appearing, especially important for marquee */
+        overflow: hidden; /* Prevents scrollbars from appearing, essential for marquee */
         position: relative; /* Essential for positioning the absolute bottom marquee */
       }
 
@@ -68,15 +68,15 @@
       .marquee-container {
         width: 100%;
         overflow: hidden; /* Hides content outside the container */
-        white-space: nowrap; /* Keeps all marquee items on one line */
+        white-space: nowrap; /* Keeps all marquee items on one line, crucial for flex-item scrolling */
         padding: 0; /* Reset padding, as wrapper handles it */
       }
 
       .marquee-content {
         display: flex; /* Use flex to layout project cards horizontally */
         align-items: center; /* Vertically align cards within the flex container */
-        /* IMPORTANT: Removed padding-left: 100%; to ensure seamless looping */
-        animation: scrolling-marquee 60s linear infinite; /* Adjusted to 30s for slightly slower scroll */
+        width: max-content; /* Allows content to dictate its width, essential for animation */
+        animation: scrolling-marquee 20s linear infinite; /* Set to 20s for desired speed */
         height: auto; /* Allow content to define height */
       }
 
@@ -150,17 +150,13 @@
         align-items: center;
       }
 
-      /* Keyframe animation for the scrolling effect */
+      /* Keyframe animation for the scrolling effect - Now translates by 50% for seamless loop */
       @keyframes scrolling-marquee {
         0% {
-          transform: translateX(0px); /* Start at original position */
+          transform: translateX(0%); /* Start at original position */
         }
-        /* Calculate total width of ONE complete set of cards for seamless looping */
-        /* Each card is 280px wide + 25px left margin + 25px right margin = 330px per card */
-        /* There are 25 unique cards in the original set in the HTML */
-        /* Total width of one set = 25 * 330px = 8250px */
         100% {
-          transform: translateX(-8250px); /* Move left by the exact width of one full set of unique cards */
+          transform: translateX(-50%); /* Move left by exactly half of the total content's width */
         }
       }
 
@@ -237,11 +233,10 @@
     <div class="bottom-marquee-wrapper">
       <div class="marquee-container">
         <div class="marquee-content" id="marqueeContent">
-          <!-- Duplicated content multiple times for continuous scrolling -->
-          <!-- The total width of one unique set of cards is 8250px. The animation moves exactly this distance. -->
-          <!-- By repeating the content, the animation seamlessly loops. -->
+          <!-- Duplicated content exactly once for seamless infinite looping. -->
+          <!-- This block will be duplicated via JavaScript for infinite effect -->
 
-          <!-- START of Unique Project Cards Set 1 -->
+          <!-- START of Unique Project Cards Set (This entire block will be duplicated) -->
           <div class="project-card">
             <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
@@ -336,7 +331,7 @@
           <div class="project-card">
             <a href="https://www.yahoo.com/news/gold-rush-2-0-colorado-182444867.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
-                <img src="https://s.yimg.com/ny/api/res/1.2/edzjvf8des67za_MpVBdhw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04Mjg-/https://media.zenfs.com/en/kdvr_denver_articles_499/93f8e532e6e88dafdb13f7b6cf94d109" alt="Gold Rush 2.0: Colorado Still a Gold-Producing State" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+                <img src="https://s.yimg.com/ny/api/res/1.2/edzjvf8des67za_MpVBdhw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=8Mjg-/https://media.zenfs.com/en/kdvr_denver_articles_499/93f8e532e6e88dafdb13f7b6cf94d109" alt="Gold Rush 2.0: Colorado Still a Gold-Producing State" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
               </div>
               <div class="project-info">
                 <div class="project-title">Gold Rush 2.0: Colorado Still a Gold-Producing State</div>
@@ -349,7 +344,7 @@
           <div class="project-card">
             <a href="https://www.aol.com/ohio-home-3-cities-cheapest-100109946.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
-                <img src="https://s.yimg.com/ny/api/res/1.2/6Jwh6.DA0p.fztXLpujLww--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD0xODYz/https://media.zenfs.com/en/aol_gannett_aggregated_707/ba7e3f89fc002bcd7ccb265cd24829cd" alt="Ohio Home to 3 Cities With Cheapest Rent" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+                <img src="https://s.yimg.com/ny/api/res/1.2/6Jwh6.DA0p.fztXLpujLww--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1ODYz/https://media.zenfs.com/en/aol_gannett_aggregated_707/ba7e3f89fc002bcd7ccb265cd24829cd" alt="Ohio Home to 3 Cities With Cheapest Rent" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
               </div>
               <div class="project-info">
                 <div class="project-title">Ohio Home to 3 Cities With Cheapest Rent</div>
@@ -362,7 +357,7 @@
           <div class="project-card">
             <a href="https://www.express.co.uk/finance/personalfinance/1950958/99p-tin-foil-hack-keeps-you-warm-does-much-turning-heating-up" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
-                <img src="https://cdn.images.express.co.uk/img/dynamic/23/940x/secondary/5638930.avif?r=1726820412072" alt="99p Tin Foil Hack Keeps You Warm" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+                <img src="https://cdn.images.express.co.uk/img/dynamic/1/940x/secondary/5638930.avif?r=1726820412072" alt="99p Tin Foil Hack Keeps You Warm" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
               </div>
               <div class="project-info">
                 <div class="project-title">99p Tin Foil Hack Keeps You Warm for Heating Savings</div>
@@ -453,7 +448,7 @@
           <div class="project-card">
             <a href="https://www.yahoo.com/news/study-finds-oregon-washington-among-191441043.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
-                <img src="https://s.yimg.com/ny/api/res/1.2/FEg90ceu3w0q24E9Mgi6FA--/YXBwaWQ9aGlnaGxhbmRlcjtwPTA/https://media.zenfs.com/en/koin_articles_940/e4e46f53b00230b7447525208e266312" alt="Oregon & Washington: Expensive Yards" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+                <img src="https://s.yimg.com/ny/api/res/1.2/FEg90ceu3w0q24E9Mgi6FA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1MTUy/https://media.zenfs.com/en/koin_articles_940/e4e46f53b00230b7447525208e266312" alt="Oregon & Washington: Expensive Yards" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
               </div>
               <div class="project-info">
                 <div class="project-title">Study Finds Oregon & Washington Among Top 10 States With Expensive Yards</div>
@@ -479,7 +474,7 @@
           <div class="project-card">
             <a href="https://www.yahoo.com/news/blazing-deals-ohio-ranks-6th-183035770.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
-                <img src="https://s.yimg.com/ny/api/res/1.2/Pf0iqmweX_fLH_Zg6lgxGw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyNDI7aD04MDY-/https://media.zenfs.com/en/the-columbus-dispatch/0067b63158a6efb64ff5a8c4b4c32e18" alt="Blazing Deals: Ohio Ranks 6th Cheapest State for Medical Marijuana" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+                <img src="https://s.yimg.com/ny/api/res/1.2/Pf0iqmweX_fLH_Zg6lgxGw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=8MDY-/https://media.zenfs.com/en/the-columbus-dispatch/0067b63158a6efb64ff5a8c4b4c32e18" alt="Blazing Deals: Ohio Ranks 6th Cheapest State for Medical Marijuana" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
               </div>
               <div class="project-info">
                 <div class="project-title">Ohio Ranks 6th Cheapest for Medical Marijuana</div>
@@ -554,7 +549,637 @@
               </div>
             </a>
           </div>
-          <!-- END of Unique Project Cards Set 4 (Duplication for extra smooth looping) -->
+          <!-- END of Unique Project Cards Set -->
+
+          <!-- START of Duplicated Project Cards Set (Exact copy of the above for infinite loop) -->
+          <div class="project-card">
+            <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/YsiOHv08APMdxjGe.uZa5g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD0xMTUy/https://media.zenfs.com/en/wealth_of_geeks_188/23cc4a6e290ece690869d49d81076c0b" alt="Celebrities at Risk of Deepfakes" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Celebrities Most At Risk From Deepfakes</div>
+                <div class="project-metrics">
+                   www.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.nj.com/news/2025/01/nj-has-the-second-worst-roads-in-the-nation-survey-says.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.nj.com/resizer/v2/BYX3AXYJYFEO7DAGNYMNAOHB74.jpg?auth=17fe36416d3d644357fea2cde84a4fa0e19b663a72adbccf583f343f731aa2ca&width=1280&quality=90" alt="NJ Has the Second Worst Roads in the Nation" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">NJ Has the Second Worst Roads in the Nation</div>
+                <div class="project-metrics">
+                   www.nj.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.entrepreneur.com/business-news/high-paying-jobs-that-dont-require-college-degrees-report/484913" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1wxhRc.img?w=768&h=512&m=6" alt="High-Paying Jobs That Don't Require College Degrees" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">High-Paying Jobs That Don't Require College Degrees</div>
+                <div class="project-metrics">
+                   www.entrepreneur.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.mirror.co.uk/lifestyle/motoring/car-reviews/jaguar-type-00-labelled-ugliest-34236779" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://i2-prod.mirror.co.uk/article34236750.ece/ALTERNATES/s1023/1_Karlie-Kloss-Devon-Windsor-Offset-David-Gandy-Attend-Reimagined-Jaguar-Brand-Debut-At-Miami-Art-W.jpg" alt="Jaguar Type 00 Labelled Ugliest" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Jaguar Type 00 Labelled "Ugliest" in Car Review</div>
+                <div class="project-metrics">
+                   www.mirror.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.birminghammail.co.uk/news/cost-of-living/state-pensioners-urged-switch-six-30322146" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://i2-prod.birminghammail.co.uk/article30322156.ece/ALTERNATES/s1023/0_oap.jpg" alt="State Pensioners Urged to Switch to Save Money" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">State Pensioners Urged to Switch to Save Money</div>
+                <div class="project-metrics">
+                   www.birminghammail.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.express.co.uk/news/uk/1966522/uk-town-dirtiest-takeaways-list" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://cdn.images.express.co.uk/img/dynamic/1/940x/secondary/wigan-5716663.avif?r=1729767217078" alt="UK Town with Britain's Dirtiest Takeaways" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">UK Town with Britain's Dirtiest Takeaways Revealed</div>
+                <div class="project-metrics">
+                   www.express.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.the-express.com/news/us-news/150601/americas-worst-addictions-revealed" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.the-express.com/news/us-news/150601/americas-worst-addictions-revealed" alt="America's Worst Addictions Revealed" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">America's Worst Addictions Revealed</div>
+                <div class="project-metrics">
+                   www.the-express.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.yahoo.com/news/gold-rush-2-0-colorado-182444867.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/edzjvf8des67za_MpVBdhw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=8Mjg-/https://media.zenfs.com/en/kdvr_denver_articles_499/93f8e532e6e88dafdb13f7b6cf94d109" alt="Gold Rush 2.0: Colorado Still a Gold-Producing State" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Gold Rush 2.0: Colorado Still a Gold-Producing State</div>
+                <div class="project-metrics">
+                   www.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.aol.com/ohio-home-3-cities-cheapest-100109946.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/6Jwh6.DA0p.fztXLpujLww--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1ODYz/https://media.zenfs.com/en/aol_gannett_aggregated_707/ba7e3f89fc002bcd7ccb265cd24829cd" alt="Ohio Home to 3 Cities With Cheapest Rent" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Ohio Home to 3 Cities With Cheapest Rent</div>
+                <div class="project-metrics">
+                   www.aol.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.express.co.uk/finance/personalfinance/1950958/99p-tin-foil-hack-keeps-you-warm-does-much-turning-heating-up" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://cdn.images.express.co.uk/img/dynamic/1/940x/secondary/5638930.avif?r=1726820412072" alt="99p Tin Foil Hack Keeps You Warm" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">99p Tin Foil Hack Keeps You Warm for Heating Savings</div>
+                <div class="project-metrics">
+                   www.express.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.msn.com/en-us/travel/news/report-shows-arkansans-in-the-top-10-for-spending-the-most-on-casino-gambling/ar-AA1qhxfj" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1qhG2x.img?w=640&h=360&m=6" alt="Arkansans Among Top 10 for Casino Gambling" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Report Shows Arkansans in Top 10 for Casino Gambling Spending</div>
+                <div class="project-metrics">
+                   www.msn.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://news.yahoo.com/news/10-worst-states-move-why-130014619.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.gannett-cdn.com/-mm-/112b2fcb542b4a9ecdc8f9331b3b586f46821540/c=15-0-1786-1328/local/-/media/Phoenix/2014/07/24/pnigr0725gilberthistoryspotlight.jpg" alt="The 10 Worst States to Move To" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">The 10 Worst States to Move To and Why You Should Avoid Them</div>
+                <div class="project-metrics">
+                   news.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://medium.com/secure-words/the-most-common-and-weak-passwords-on-the-internet-in-2024-so-far-85ca1266cafe" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*NV0OHw_m1nvv2yoI" alt="Most Common and Weak Passwords of 2024" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">The Most Common and Weak Passwords on the Internet in 2024</div>
+                <div class="project-metrics">
+                   medium.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.timeout.com/uk/news/revealed-the-uk-city-where-youre-most-likely-to-get-parking-fines-021524" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://media.timeout.com/images/106096034/1920/1080/image.webp" alt="UK City Most Likely to Get Parking Fines" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Revealed: The UK City Most Likely to Get Parking Fines</div>
+                <div class="project-metrics">
+                   www.timeout.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.ktalnews.com/entertainment-news/new-orleans-saints-have-best-touchdown-song-in-the-nfl-study-says/#:~:text=The%20New%20Orleans%20Saints'%20touchdown,loudness%2C%20according%20to%20the%20study" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.ktalnews.com/wp-content/uploads/sites/5/2021/12/4b0cd809244a47ff84220ec7f72f9891.jpg?w=900" alt="New Orleans Saints Best NFL Touchdown Song" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">New Orleans Saints Have Best Touchdown Song in the NFL</div>
+                <div class="project-metrics">
+                   www.ktalnews.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.thefocus.news/lifestyle/new-study-reveals-state-with-the-best-work-life-balance-where-they-work-less-than-34-hours-a-week/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://cdn.thefocus.news/uploads/2024/04/GettyImages-748345789-scaled.jpg" alt="State With the Best Work-Life Balance" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">New Study Reveals State With the Best Work-Life Balance</div>
+                <div class="project-metrics">
+                   www.thefocus.news
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.yahoo.com/news/study-finds-oregon-washington-among-191441043.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/FEg90ceu3w0q24E9Mgi6FA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1MTUy/https://media.zenfs.com/en/koin_articles_940/e4e46f53b00230b7447525208e266312" alt="Oregon & Washington: Expensive Yards" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Study Finds Oregon & Washington Among Top 10 States With Expensive Yards</div>
+                <div class="project-metrics">
+                   news.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.dailymail.co.uk/sport/nfl/article-13109763/Taylor-Swift-Kansas-City-Chiefs-Travis-Kelce-SUoer-Bowl.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://i.dailymail.co.uk/1s/2024/02/21/16/81540687-13109763-image-a-16_1708533836667.jpg" alt="Taylor Swift & Kansas City Chiefs: Travis Kelce Super Bowl" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Chiefs See 34% Fan Surge Thanks to Kelce & Swift</div>
+                <div class="project-metrics">
+                   www.dailymail.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.yahoo.com/news/blazing-deals-ohio-ranks-6th-183035770.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/Pf0iqmweX_fLH_Zg6lgxGw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=8MDY-/https://media.zenfs.com/en/the-columbus-dispatch/0067b63158a6efb64ff5a8c4b4c32e18" alt="Blazing Deals: Ohio Ranks 6th Cheapest State for Medical Marijuana" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Ohio Ranks 6th Cheapest for Medical Marijuana</div>
+                <div class="project-metrics">
+                   news.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://hot969boston.com/listicle/massachusetts-named-the-most-fitness-obsessed-state/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://hot969boston.com/uploads/2023/02/State-workouts.jpg?format=auto&optimize=high&width=3840" alt="Massachusetts Named Most Fitness-Obsessed State" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Massachusetts: Most Fitness-Obsessed State</div>
+                <div class="project-metrics">
+                   hot969boston.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://africa.businessinsider.com/local/markets/nigeria-ranks-number-one-globally-for-cryptocurrency-usage-and-ownership/xynm1cw" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://ocdn.eu/pulscms-transforms/1/oJGk9kpTURBXy80ODM2ZDMwYjQ0ZTg0MGQ5YzExZDcyYWYyMDllZDExNy5qcGeSlQMAAM0FAM0C0JMFzQMWzQGu3gACoTAGoTEA" alt="Crypto icon" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Nigeria Ranks #1 for Cryptocurrency Usage Globally</div>
+                <div class="project-metrics">
+                   africa.businessinsider.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.hola.com/us/entertainment/20230131342164/shakira-and-jlos-super-bowl-halftime-show-is-the-most-viewed/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.hola.com/us/horizon/original_aspect_ratio/d9d8129e3804-pepsi-super-bowl-liv-halftime-show.jpg?im=Resize=(960),type=downsize" alt="Halftime show icon" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Shakira & J.Lo Halftime Show: Most Viewed Super Bowl Moments</div>
+                <div class="project-metrics">
+                   www.hola.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.netflixjunkie.com/netflix-news-despite-harsh-critics-netflix-fans-deem-jennifer-anistons-murder-mystery-one-of-the-most-underrated-shows-ever/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://image-cdn.netflixjunkie.com/wp-content/uploads/GettyImages-1477703835.jpg?width=900" alt="Netflix icon" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Netflix Fans Deem Jennifer Aniston's Film Most Underrated</div>
+                <div class="project-metrics">
+                   www.netflixjunkie.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.forbes.com/sites/chriswestfall/2024/12/20/10-highest-paying-jobs-no-degree-required/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://specials-images.forbesimg.com/imageserve/6761c18e342527bd8e383165/Top-paying-jobs-that-don-t-require-a-college-degree-/960x0.jpg?cropX1=0&cropX2=2081&cropY1=107&cropY2=1277" alt="DATA LED: The highest paying jobs where you don't need a degree" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">DATA LED: The highest paying jobs where you don't need a degree</div>
+                <div class="project-metrics">
+                   www.forbes.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <!-- END of Unique Project Cards Set -->
+
+          <!-- START of Duplicated Project Cards Set (Exact copy of the above for infinite loop) -->
+          <div class="project-card">
+            <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/YsiOHv08APMdxjGe.uZa5g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1MTUy/https://media.zenfs.com/en/wealth_of_geeks_188/23cc4a6e290ece690869d49d81076c0b" alt="Celebrities at Risk of Deepfakes" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Celebrities Most At Risk From Deepfakes</div>
+                <div class="project-metrics">
+                   www.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.nj.com/news/2025/01/nj-has-the-second-worst-roads-in-the-nation-survey-says.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.nj.com/resizer/v2/BYX3AXYJYFEO7DAGNYMNAOHB74.jpg?auth=17fe36416d3d644357fea2cde84a4fa0e19b663a72adbccf583f343f731aa2ca&width=1280&quality=90" alt="NJ Has the Second Worst Roads in the Nation" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">NJ Has the Second Worst Roads in the Nation</div>
+                <div class="project-metrics">
+                   www.nj.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.entrepreneur.com/business-news/high-paying-jobs-that-dont-require-college-degrees-report/484913" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1wxhRc.img?w=768&h=512&m=6" alt="High-Paying Jobs That Don't Require College Degrees" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">High-Paying Jobs That Don't Require College Degrees</div>
+                <div class="project-metrics">
+                   www.entrepreneur.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.mirror.co.uk/lifestyle/motoring/car-reviews/jaguar-type-00-labelled-ugliest-34236779" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://i2-prod.mirror.co.uk/article34236750.ece/ALTERNATES/s1023/1_Karlie-Kloss-Devon-Windsor-Offset-David-Gandy-Attend-Reimagined-Jaguar-Brand-Debut-At-Miami-Art-W.jpg" alt="Jaguar Type 00 Labelled Ugliest" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Jaguar Type 00 Labelled "Ugliest" in Car Review</div>
+                <div class="project-metrics">
+                   www.mirror.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.birminghammail.co.uk/news/cost-of-living/state-pensioners-urged-switch-six-30322146" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://i2-prod.birminghammail.co.uk/article30322156.ece/ALTERNATES/s1023/0_oap.jpg" alt="State Pensioners Urged to Switch to Save Money" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">State Pensioners Urged to Switch to Save Money</div>
+                <div class="project-metrics">
+                   www.birminghammail.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.express.co.uk/news/uk/1966522/uk-town-dirtiest-takeaways-list" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://cdn.images.express.co.uk/img/dynamic/1/940x/secondary/wigan-5716663.avif?r=1729767217078" alt="UK Town with Britain's Dirtiest Takeaways" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">UK Town with Britain's Dirtiest Takeaways Revealed</div>
+                <div class="project-metrics">
+                   www.express.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.the-express.com/news/us-news/150601/americas-worst-addictions-revealed" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.the-express.com/news/us-news/150601/americas-worst-addictions-revealed" alt="America's Worst Addictions Revealed" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">America's Worst Addictions Revealed</div>
+                <div class="project-metrics">
+                   www.the-express.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.yahoo.com/news/gold-rush-2-0-colorado-182444867.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/edzjvf8des67za_MpVBdhw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=8Mjg-/https://media.zenfs.com/en/kdvr_denver_articles_499/93f8e532e6e88dafdb13f7b6cf94d109" alt="Gold Rush 2.0: Colorado Still a Gold-Producing State" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Gold Rush 2.0: Colorado Still a Gold-Producing State</div>
+                <div class="project-metrics">
+                   www.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.aol.com/ohio-home-3-cities-cheapest-100109946.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/6Jwh6.DA0p.fztXLpujLww--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1ODYz/https://media.zenfs.com/en/aol_gannett_aggregated_707/ba7e3f89fc002bcd7ccb265cd24829cd" alt="Ohio Home to 3 Cities With Cheapest Rent" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Ohio Home to 3 Cities With Cheapest Rent</div>
+                <div class="project-metrics">
+                   www.aol.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.express.co.uk/finance/personalfinance/1950958/99p-tin-foil-hack-keeps-you-warm-does-much-turning-heating-up" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://cdn.images.express.co.uk/img/dynamic/1/940x/secondary/5638930.avif?r=1726820412072" alt="99p Tin Foil Hack Keeps You Warm" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">99p Tin Foil Hack Keeps You Warm for Heating Savings</div>
+                <div class="project-metrics">
+                   www.express.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.msn.com/en-us/travel/news/report-shows-arkansans-in-the-top-10-for-spending-the-most-on-casino-gambling/ar-AA1qhxfj" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1qhG2x.img?w=640&h=360&m=6" alt="Arkansans Among Top 10 for Casino Gambling" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Report Shows Arkansans in Top 10 for Casino Gambling Spending</div>
+                <div class="project-metrics">
+                   www.msn.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://news.yahoo.com/news/10-worst-states-move-why-130014619.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.gannett-cdn.com/-mm-/112b2fcb542b4a9ecdc8f9331b3b586f46821540/c=15-0-1786-1328/local/-/media/Phoenix/2014/07/24/pnigr0725gilberthistoryspotlight.jpg" alt="The 10 Worst States to Move To" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">The 10 Worst States to Move To and Why You Should Avoid Them</div>
+                <div class="project-metrics">
+                   news.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://medium.com/secure-words/the-most-common-and-weak-passwords-on-the-internet-in-2024-so-far-85ca1266cafe" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/0*NV0OHw_m1nvv2yoI" alt="Most Common and Weak Passwords of 2024" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">The Most Common and Weak Passwords on the Internet in 2024</div>
+                <div class="project-metrics">
+                   medium.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.timeout.com/uk/news/revealed-the-uk-city-where-youre-most-likely-to-get-parking-fines-021524" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://media.timeout.com/images/106096034/1920/1080/image.webp" alt="UK City Most Likely to Get Parking Fines" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Revealed: The UK City Most Likely to Get Parking Fines</div>
+                <div class="project-metrics">
+                   www.timeout.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.ktalnews.com/entertainment-news/new-orleans-saints-have-best-touchdown-song-in-the-nfl-study-says/#:~:text=The%20New%20Orleans%20Saints'%20touchdown,loudness%2C%20according%20to%20the%20study" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.ktalnews.com/wp-content/uploads/sites/5/2021/12/4b0cd809244a47ff84220ec7f72f9891.jpg?w=900" alt="New Orleans Saints Best NFL Touchdown Song" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">New Orleans Saints Have Best Touchdown Song in the NFL</div>
+                <div class="project-metrics">
+                   www.ktalnews.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.thefocus.news/lifestyle/new-study-reveals-state-with-the-best-work-life-balance-where-they-work-less-than-34-hours-a-week/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://cdn.thefocus.news/uploads/2024/04/GettyImages-748345789-scaled.jpg" alt="State With the Best Work-Life Balance" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">New Study Reveals State With the Best Work-Life Balance</div>
+                <div class="project-metrics">
+                   www.thefocus.news
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.yahoo.com/news/study-finds-oregon-washington-among-191441043.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/FEg90ceu3w0q24E9Mgi6FA--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1MTUy/https://media.zenfs.com/en/koin_articles_940/e4e46f53b00230b7447525208e266312" alt="Oregon & Washington: Expensive Yards" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Study Finds Oregon & Washington Among Top 10 States With Expensive Yards</div>
+                <div class="project-metrics">
+                   news.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.dailymail.co.uk/sport/nfl/article-13109763/Taylor-Swift-Kansas-City-Chiefs-Travis-Kelce-SUoer-Bowl.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://i.dailymail.co.uk/1s/2024/02/21/16/81540687-13109763-image-a-16_1708533836667.jpg" alt="Taylor Swift & Kansas City Chiefs: Travis Kelce Super Bowl" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Chiefs See 34% Fan Surge Thanks to Kelce & Swift</div>
+                <div class="project-metrics">
+                   www.dailymail.co.uk
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.yahoo.com/news/blazing-deals-ohio-ranks-6th-183035770.html" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://s.yimg.com/ny/api/res/1.2/Pf0iqmweX_fLH_Zg6lgxGw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=8MDY-/https://media.zenfs.com/en/the-columbus-dispatch/0067b63158a6efb64ff5a8c4b4c32e18" alt="Blazing Deals: Ohio Ranks 6th Cheapest State for Medical Marijuana" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Ohio Ranks 6th Cheapest for Medical Marijuana</div>
+                <div class="project-metrics">
+                   news.yahoo.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://hot969boston.com/listicle/massachusetts-named-the-most-fitness-obsessed-state/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://hot969boston.com/uploads/2023/02/State-workouts.jpg?format=auto&optimize=high&width=3840" alt="Massachusetts Named Most Fitness-Obsessed State" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Massachusetts: Most Fitness-Obsessed State</div>
+                <div class="project-metrics">
+                   hot969boston.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://africa.businessinsider.com/local/markets/nigeria-ranks-number-one-globally-for-cryptocurrency-usage-and-ownership/xynm1cw" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://ocdn.eu/pulscms-transforms/1/oJGk9kpTURBXy80ODM2ZDMwYjQ0ZTg0MGQ5YzExZDcyYWYyMDllZDExNy5qcGeSlQMAAM0FAM0C0JMFzQMWzQGu3gACoTAGoTEA" alt="Crypto icon" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Nigeria Ranks #1 for Cryptocurrency Usage Globally</div>
+                <div class="project-metrics">
+                   africa.businessinsider.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.hola.com/us/entertainment/20230131342164/shakira-and-jlos-super-bowl-halftime-show-is-the-most-viewed/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://www.hola.com/us/horizon/original_aspect_ratio/d9d8129e3804-pepsi-super-bowl-liv-halftime-show.jpg?im=Resize=(960),type=downsize" alt="Halftime show icon" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Shakira & J.Lo Halftime Show: Most Viewed Super Bowl Moments</div>
+                <div class="project-metrics">
+                   www.hola.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.netflixjunkie.com/netflix-news-despite-harsh-critics-netflix-fans-deem-jennifer-anistons-murder-mystery-one-of-the-most-underrated-shows-ever/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://image-cdn.netflixjunkie.com/wp-content/uploads/GettyImages-1477703835.jpg?width=900" alt="Netflix icon" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">Netflix Fans Deem Jennifer Aniston's Film Most Underrated</div>
+                <div class="project-metrics">
+                   www.netflixjunkie.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="project-card">
+            <a href="https://www.forbes.com/sites/chriswestfall/2024/12/20/10-highest-paying-jobs-no-degree-required/" target="_blank" rel="noopener noreferrer">
+              <div class="project-image">
+                <img src="https://specials-images.forbesimg.com/imageserve/6761c18e342527bd8e383165/Top-paying-jobs-that-don-t-require-a-college-degree-/960x0.jpg?cropX1=0&cropX2=2081&cropY1=107&cropY2=1277" alt="DATA LED: The highest paying jobs where you don't need a degree" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+              </div>
+              <div class="project-info">
+                <div class="project-title">DATA LED: The highest paying jobs where you don't need a degree</div>
+                <div class="project-metrics">
+                   www.forbes.com
+                </div>
+              </div>
+            </a>
+          </div>
+          <!-- END of Duplicated Project Cards Set (Exact copy of the above for infinite loop) -->
         </div>
       </div>
     </div>
