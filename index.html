@@ -7,11 +7,10 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Coutanche</title>
     <!-- Favicon links - Corrected to absolute URLs for GitHub Pages custom domain -->
-    <link rel="icon" type="image/x-icon" href="coutanche1.github.io/nche/favicon_io/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="coutanche1.github.io/nche/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="coutanche1.github.io/nche/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="coutanche1.github.io/nche/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="coutanche1.github.io/nche/favicon_io/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="coutanche1.github.io/Nche/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="coutanche1.github.io/Nche/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="coutanche1.github.io/Nche/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="coutanche1.github.io/Nche/favicon_io/site.webmanifest">
     <!-- End of Favicon links -->
     <style>
       /* Universal box-sizing for consistent layout across all elements */
@@ -37,18 +36,24 @@
         position: relative;
         display: flex; /* Uses Flexbox for centering */
         flex-direction: column; /* Stacks items vertically */
-        justify-content: center; /* Centers content vertically */
+        justify-content: flex-start; /* Aligns content to the top */
         align-items: center; /* Centers content horizontally */
+        padding-top: 20vh; /* Adjust this value to raise or lower the main content */
       }
       .content {
         text-align: center;
-        margin-bottom: 20px; /* Provides space above the marquee */
+        margin-bottom: 20px; /* Provides space below the email/about link */
         white-space: nowrap; /* Prevents the email text from wrapping */
       }
-      /* Style for the mailto link to match the original text appearance */
+      /* Style for the mailto link and About Me link to match the original text appearance */
       .content a {
         text-decoration: none;
         color: inherit; /* Inherit color from parent for consistency */
+        display: block; /* Make each link a block to stack them vertically */
+        margin-top: 10px; /* Space between the email and about link */
+      }
+      .content a:first-child {
+        margin-top: 0; /* No top margin for the first link (email) */
       }
       .content a:hover {
         text-decoration: underline; /* Add underline on hover for clickability cue */
@@ -198,6 +203,9 @@
         .bottom-marquee-wrapper {
           padding: 15px 0;
         }
+        .container {
+          padding-top: 15vh; /* Adjust for smaller screens */
+        }
       }
 
       @media (max-width: 480px) {
@@ -222,26 +230,31 @@
         .bottom-marquee-wrapper {
           padding: 10px 0;
         }
+        .container {
+          padding-top: 10vh; /* Adjust for very small screens */
+        }
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="content"><a href="mailto:Couta@nche.uk" style="text-decoration: none; color: inherit;">Couta@nche.uk</a></div>
+      <div class="content">
+        <a href="mailto:Couta@nche.uk">Couta@nche.uk</a>
+        <a href="https://coutanche1.github.io/Nche/AboutMe/index.html" target="_blank" rel="noopener noreferrer">About me</a>
+      </div>
     </div>
 
     <!-- New wrapper for the marquee at the very bottom of the page -->
     <div class="bottom-marquee-wrapper">
       <div class="marquee-container">
         <div class="marquee-content" id="marqueeContent">
-          <!-- Duplicated content exactly once for seamless infinite looping. -->
-          <!-- This block will be duplicated via JavaScript for infinite effect -->
+          <!-- The content now contains exactly two identical sets of project cards for seamless infinite looping. -->
 
-          <!-- START of Unique Project Cards Set (This entire block will be duplicated) -->
+          <!-- START of Unique Project Cards Set -->
           <div class="project-card">
             <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
-                <img src="https://s.yimg.com/ny/api/res/1.2/YsiOHv08APMdxjGe.uZa5g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD0xMTUy/https://media.zenfs.com/en/wealth_of_geeks_188/23cc4a6e290ece690869d49d81076c0b" alt="Celebrities at Risk of Deepfakes" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+                <img src="https://s.yimg.com/ny/api/res/1.2/YsiOHv08APMdxjGe.uZa5g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1MTUy/https://media.zenfs.com/en/wealth_of_geeks_188/23cc4a6e290ece690869d49d81076c0b" alt="Celebrities at Risk of Deepfakes" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
               </div>
               <div class="project-info">
                 <div class="project-title">Celebrities Most At Risk From Deepfakes</div>
@@ -553,10 +566,11 @@
           <!-- END of Unique Project Cards Set -->
 
           <!-- START of Duplicated Project Cards Set (Exact copy of the above for infinite loop) -->
+          <!-- This second set ensures the seamless transition for the infinite scroll -->
           <div class="project-card">
             <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
-                <img src="https://s.yimg.com/ny/api/res/1.2/YsiOHv08APMdxjGe.uZa5g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD0xMTUy/https://media.zenfs.com/en/wealth_of_geeks_188/23cc4a6e290ece690869d49d81076c0b" alt="Celebrities at Risk of Deepfakes" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
+                <img src="https://s.yimg.com/ny/api/res/1.2/YsiOHv08APMdxjGe.uZa5g--/YXBwaWQ9aGlnaGxhbmRlcjt3PTIwNDg7aD=1MTUy/https://media.zenfs.com/en/wealth_of_geeks_188/23cc4a6e290ece690869d49d81076c0b" alt="Celebrities at Risk of Deepfakes" onerror="this.onerror=null;this.src='https://placehold.co/280x150/DDDDDD/000000?text=IMG';" />
               </div>
               <div class="project-info">
                 <div class="project-title">Celebrities Most At Risk From Deepfakes</div>
@@ -868,6 +882,7 @@
           <!-- END of Unique Project Cards Set -->
 
           <!-- START of Duplicated Project Cards Set (Exact copy of the above for infinite loop) -->
+          <!-- This second set ensures the seamless transition for the infinite scroll -->
           <div class="project-card">
             <a href="https://www.yahoo.com/entertainment/celebrities-most-risk-deepfake-protect-190820981.html" target="_blank" rel="noopener noreferrer">
               <div class="project-image">
