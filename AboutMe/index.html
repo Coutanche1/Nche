@@ -133,6 +133,36 @@
   display: inline-flex; /* Ensures the link doesn't take up full width */
   align-items: center; /* Vertically centers the image within the link */
 }
+  /* Style for the Home Icon Link */
+.home-icon-link {
+    position: absolute; /* Positions the icon relative to the closest positioned ancestor, or the viewport */
+    top: 20px; /* Distance from the top edge */
+    left: 20px; /* Distance from the left edge */
+    display: block; /* Ensures the link behaves like a block for padding/border */
+    padding: 8px; /* Space inside the box around the icon */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Very subtle light gray border */
+    border-radius: 5px; /* Slightly rounded corners for the box */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Very subtle shadow for depth */
+    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
+    z-index: 1000; /* Ensures the icon stays on top of other content */
+    text-decoration: none; /* Removes any underline from the link */
+    transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Hover effect for the Home Icon */
+.home-icon-link:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
+    background-color: rgba(255, 255, 255, 0.9); /* Less transparent on hover */
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Style for the actual home image within the link */
+.home-icon-link img {
+    width: 30px; /* Size of the home icon (adjust as desired) */
+    height: 30px;
+    display: block; /* Removes extra space below the image */
+    filter: brightness(0); /* Makes the PNG black if it's not already */
+}
     </style>
   </head>
   <body>
