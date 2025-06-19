@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <title>Coutanche</title>
     <style>
       /* Universal box-sizing for consistent layout across all elements */
@@ -24,6 +19,7 @@
         overflow: hidden; /* Prevents scrollbars from appearing, essential for marquee */
         position: relative; /* Essential for positioning the absolute bottom marquee */
       }
+
       /* Styles for the main content (Couta@nche.uk) */
       .container {
         height: 100%; /* Allows main content to fill remaining space */
@@ -52,17 +48,7 @@
       .content a:hover {
         text-decoration: underline; /* Add underline on hover for clickability cue */
       }
-      .contact-icons {
-        margin-top: 20px;
-      }
-      .contact-icons a {
-        display: inline-block;
-        margin: 0 10px;
-      }
-      .contact-icons img {
-        width: 24px;
-        height: 24px;
-      }
+
       /* Wrapper for the bottom marquee to position it absolutely at the bottom */
       .bottom-marquee-wrapper {
         position: absolute;
@@ -73,6 +59,7 @@
         background-color: #f0f0f0; /* Slightly different background for distinction */
         box-shadow: 0 -4px 15px rgba(0,0,0,0.1); /* Stronger shadow to lift it slightly */
       }
+
       /* Marquee Styles */
       .marquee-container {
         width: 100%;
@@ -80,6 +67,7 @@
         white-space: nowrap; /* Keeps all marquee items on one line, crucial for flex-item scrolling */
         padding: 0; /* Reset padding, as wrapper handles it */
       }
+
       .marquee-content {
         display: flex; /* Use flex to layout project cards horizontally */
         align-items: center; /* Vertically align cards within the flex container */
@@ -87,6 +75,7 @@
         animation: scrolling-marquee 50s linear infinite; /* Set to 20s for desired speed */
         height: auto; /* Allow content to define height */
       }
+
       /* Styles for each project card */
       .project-card {
         flex-shrink: 0; /* Prevents cards from shrinking */
@@ -99,21 +88,25 @@
         transform: scale(1); /* Initial state for hover animation */
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
       }
+
       .project-card:hover {
         transform: translateY(-8px) scale(1.02); /* Lift and slightly enlarge on hover */
         box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
       }
+
       .project-card a {
         display: block; /* Make the entire card clickable */
         text-decoration: none; /* Remove underline from the whole card link */
         color: inherit; /* Inherit text color */
       }
+
       .project-image {
         width: 100%;
         height: 150px; /* Fixed height for image area */
         overflow: hidden;
         border-bottom: 1px solid #eee; /* Separator between image and info */
       }
+
       .project-image img {
         width: 100%;
         height: 100%;
@@ -121,12 +114,15 @@
         border-radius: 0; /* Override any previous circular styling */
         transition: transform 0.3s ease; /* Smooth zoom effect on hover */
       }
+
       .project-card:hover .project-image img {
         transform: scale(1.05); /* Zoom in image on card hover */
       }
+
       .project-info {
         padding: 15px;
       }
+
       .project-title {
         font-size: 17px;
         font-weight: bold;
@@ -141,12 +137,14 @@
         line-height: 1.4; /* Adjusted line height for better readability */
         max-height: 2.8em; /* 2 lines * 1.4 line-height */
       }
+
       .project-metrics {
         font-size: 14px;
         color: #777;
         display: flex;
         align-items: center;
       }
+
       /* Keyframe animation for the scrolling effect - Now translates by 50% for seamless loop */
       @keyframes scrolling-marquee {
         0% {
@@ -156,6 +154,7 @@
           transform: translateX(-50%); /* Move left by exactly half of the total content's width */
         }
       }
+
       /* Responsive Adjustments for smaller screens */
       @media (max-width: 1024px) {
         .project-card {
@@ -172,6 +171,7 @@
           font-size: 13px;
         }
       }
+
       @media (max-width: 768px) {
         body {
           font-size: 20px;
@@ -196,6 +196,7 @@
           padding-top: 15vh; /* Adjust for smaller screens */
         }
       }
+
       @media (max-width: 480px) {
         body {
           font-size: 18px;
@@ -222,22 +223,45 @@
           padding-top: 10vh; /* Adjust for very small screens */
         }
       }
+      /* PASTE THE NEW CSS RULES FOR ICONS HERE */
+        .contact-icons {
+  margin-top: 20px; /* Provides spacing below "About Me" */
+  text-align: center; /* Centers the icons */
+}
+
+.contact-icons a {
+  display: inline-block; /* Allows icons to sit side-by-side */
+  margin: 0 10px; /* Spacing between icons */
+  vertical-align: middle; /* Ensures consistent alignment */
+}
+
+.contact-icons img {
+  width: 24px; /* Small size */
+  height: 24px; /* Uniform height */
+  filter: brightness(0); /* Makes the SVG black */
+}
+
     </style>
 </head>
-<body>
-<div class="contact-icons">
-  <a href="mailto:Cout@nche.uk">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iYmxhY2siIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPjxwYXRoIGQ9M00yMCA0SDRjLTEuMSAwLTIgLjktMiAydjEyYzAgMS4xLjkgMiAyIDJoMTZjMS4xIDAgMi0uOSAyLTJWNmMwLTEuMS0uOS0yLTItMnpNMTggOGwtNiA0LTYtNFY2bDYgNCA2LTR2MnoiLz48L3N2Zz4=" alt="Email">
-  </a>
-  <a href="tel:+34711099911">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iYmxhY2siIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPjxwYXRoIGQ9M002LjYyIDEwLjU5Yy0uNDUtMS4wMy0uMy0yLjI1LjM0LTMuMjFsMi4xMy0yLjEzYy4zNy0wLjM3IDEuMDItMC4zNyAxLjM5IDBMMTMuNSA3LjVjMS40OSAxLjQ5LjQ3IDMuOTMtMS4wMyA0Ljk0bC0yLjI1IDEuNDljLTEuNTQgMS4wMi0zLjA1LTAuNDktMy41OS0xLjk0eiIvPjwvc3ZnPg==" alt="Phone">
-  </a>
-  <a href="sms:+34711099911">
-    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iYmxhY2siIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPjxwYXRoIGQ9M00yMCAySDRjLTEuMSAwLTIgLjktMiAydjE4bDQgNGgxNmMxLjEgMCAyLS45IDItMlY0YzAtMS4xLS45LTItMi0yem0tMiAxMEg2VjhoMTB2MnpNMTQgOGg0djJIOFY4aDR6Ii8+PC9zdmc+" alt="SMS">
-  </a>
-</div>
-      </div>
+     <body>
+<div class="container">
+  <div class="content">
+    <a href="mailto:Cout@nche.uk">Cout@nche.uk</a>
+    <a href="https://coutanche1.github.io/Nche/AboutMe/index.html" target="_blank" rel="noopener noreferrer">About me</a>
+    <div class="contact-icons">
+      <a href="mailto:Cout@nche.uk">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iYmxhY2siIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPjxwYXRoIGQ9M00yMCA0SDRjLTEuMSAwLTIgLjktMiAydjEyYzAgMS4xLjkgMiAyIDJoMTZjMS4xIDAgMi0uOSAyLTJWNmMwLTEuMS0uOS0yLTItMnpNMTggOGwtNiA0LTYtNFY2bDZgNCA2LTR2MnoiLz48L3N2Zz4=" alt="Email Icon">
+      </a>
+      <a href="tel:+34711099911">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iYmxhY2siIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPjxwYXRoIGQ9M002LjYyIDEwLjU5Yy0uNDUtMS4wMy0uMy0yLjI1LjM0LTMuMjFsMi4xMy0yLjEzYy4zNy0wLjM3IDEuMDItMC4zNyAxLjM5IDBMMTMuNSA3LjVjMS40OSAxLjQ5LjQ3IDMuOTMtMS4wMyA0Ljk0bC0yLjI1IDEuNDljLTEuNTQgMS4wMi0zLjA1LTAuNDktMy41OS0xLjk0eiIvPjwvc3ZnPg==" alt="Phone Icon">
+      </a>
+      <a href="sms:+34711099911">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iYmxhY2siIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPjxwYXRoIGQ9M00yMCAySDRjLTEuMSAwLTIgLjktMiAydjE4bDQgNGgxNmMxLjEgMCAyLS45IDItMlY0YzAtMS4xLS45LTItMi0yem0tMiAxMEg2VjhoMTB2MnpNMTQgOGh4djJIOFY4aDR6Ii8+PC9sZnZnPg==" alt="SMS Icon">
+      </a>
     </div>
+  </div>
+</div>
+
     <!-- New wrapper for the marquee at the very bottom of the page -->
     <div class="bottom-marquee-wrapper">
       <div class="marquee-container">
@@ -1221,3 +1245,4 @@
     });
   </script>
 </html>
+
