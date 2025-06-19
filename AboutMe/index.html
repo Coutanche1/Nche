@@ -8,13 +8,13 @@
         /* General Body Styles - Sets "Courier New" at 24px as the global default font */
         body {
             font-family: "Courier New", Courier, monospace;
-            font-size: 20px; /* Global default font size */
+            font-size: 24px; /* Global default font size */
             color: #333; /* Default text color */
             margin: 0; /* Removes default browser margin */
             padding: 20px; /* Adds padding around the page content */
             position: relative; /* Necessary for absolute positioning of the home icon */
             text-align: left; /* Default text alignment for the page, overridden for specific elements */
-            line-height: 1.6; /* ADDED: Improves readability by increasing vertical spacing between lines */
+            line-height: 1.6; /* Improves readability by increasing vertical spacing between lines */
         }
 
         /* Apply box-sizing globally for consistent element sizing */
@@ -33,12 +33,11 @@
             max-width: 800px; /* Adjust this value to control line length (e.g., 600px-800px is common) */
             margin: 0 auto; /* Centers the container on the page */
             padding-top: 20px; /* Adds space at the top so content doesn't hit home icon */
-            /* This div will wrap all main text content, including your name, contact, and summary */
         }
 
         /* Add spacing between paragraphs for better segmentation */
         p {
-            margin-bottom: 1em; /* ADDED: Adds space below each paragraph */
+            margin-bottom: 1em; /* Adds space below each paragraph */
         }
 
         /* Style for Peter Coutanche text - This remains right-aligned. Font-size inherits from body. */
@@ -71,10 +70,10 @@
         }
 
         .home-icon-link img {
-            width: 15px;
-            height: 15px;
+            width: 15px; /* Home icon size */
+            height: 15px; /* Home icon size */
             display: block;
-            filter: brightness(0);
+            filter: brightness(0); /* Makes the PNG black if it's not already */
         }
 
         /* Styles for the main contact line block (Cout@nche.uk, phone numbers, etc.) */
@@ -97,7 +96,7 @@
         /* Styles for each individual contact detail group */
         .contact-detail-group {
             display: inline-flex;
-            align-items: center;
+            align-items: center; /* Vertically centers content within the group */
             white-space: nowrap;
         }
 
@@ -106,7 +105,7 @@
             display: flex;
             align-items: center;
             margin-right: 5px;
-            line-height: 0;
+            line-height: 0; /* Helps with precise vertical alignment of the icon */
         }
 
         /* Styles for icons linked on the right of text */
@@ -114,21 +113,23 @@
             display: flex;
             align-items: center;
             margin-left: 5px;
-            line-height: 0;
+            line-height: 0; /* Helps with precise vertical alignment of the icon */
         }
 
         /* General styles for all icons within the contact details */
         .main-contact-details img {
-            width: 15px;
-            height: 15px;
-            filter: brightness(0);
+            width: 15px; /* General icon size */
+            height: 15px; /* General icon size */
+            filter: brightness(0); /* Makes the PNG black if it's not already */
         }
 
         /* Styles for the "|" separators */
         .separator-icon {
             display: inline-block;
-            margin: 0 10px;
-            vertical-align: middle;
+            font-size: 24px; /* Set font size to match surrounding text */
+            line-height: 1; /* Minimize extra space around the character */
+            vertical-align: -5px; /* ADJUSTED: Shift downwards by a few pixels for better alignment */
+            margin: 0 10px; /* Correct horizontal margins */
         }
 
         /* The Summary heading will inherit font-family and font-size from body */
@@ -165,9 +166,6 @@
             </span>
           </strong>
         </p>
-        <hr />
-        <p style="text-align: left;">&gt;&gt;<span style="color: #003366;" class="summary-heading"><strong>Summary</strong></span></p>
-    </p>
     <hr />
     <p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
     <p><strong>A dynamic Public Relations and Communications professional </strong>with a proven track record in digital strategy and media engagement. Expert in crafting compelling narratives, building relationships, delivering high-impact campaigns. Specialises in providing journalists with valuable insights and stories&mdash;spanning data-driven analysis, expert commentary, and reactive responses&mdash;for both B2B and B2C news. Exceptionally proficient across a wide spectrum of digital tools and platforms.</p>
