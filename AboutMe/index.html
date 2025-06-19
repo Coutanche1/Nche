@@ -5,52 +5,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* General Body Styles - ENSURES FONT CONSISTENCY ACROSS THE PAGE */
         body {
-            font-family: "Courier New", Courier, monospace; /* This line makes the font consistent */
-            color: #333; /* Default text color, adjust if needed */
-            margin: 0; /* Removes default browser margin around the page */
-            padding: 20px; /* Adds spacing around the content */
+            font-family: "Courier New", Courier, monospace;
+            font-size: 15px; /* Global default font size */
+            color: #333; /* Default text color */
+            margin: 0; /* Removes default browser margin */
+            padding: 20px; /* Adds padding around the page content */
             position: relative; /* Necessary for absolute positioning of the home icon */
+            text-align: left; /* Default text alignment for the page, overridden for specific elements */
+        }
+
+        /* Apply box-sizing globally for consistent element sizing */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        /* Styles for all links to remove underlines and inherit color */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .name-header {
+            text-align: right;
+            font-size: 15px; -- REMOVED to keep all text sizes the same as body (24px) */
+            line-height: 1.2;
+            margin-bottom: 5px;
+            /* Font-family, font-size, and color will now inherit from the body */
         }
 
         /* Home Icon Link Style */
         .home-icon-link {
-            position: absolute; /* Positions the icon relative to the closest positioned ancestor (body in this case) */
-            top: 20px; /* Distance from the top edge */
-            left: 20px; /* Distance from the left edge */
-            display: block; /* Ensures the link behaves like a block for padding/border */
-            padding: 8px; /* Space inside the box around the icon */
-            border: 1px solid rgba(0, 0, 0, 0.1); /* Very subtle light gray border */
-            border-radius: 5px; /* Slightly rounded corners for the box */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Very subtle shadow for depth */
-            background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
-            z-index: 1000; /* Ensures the icon stays on top of other content */
-            text-decoration: none; /* Removes any underline from the link */
-            transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: block; /* Ensures it takes up space for padding/border */
+            padding: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: 1000;
+            transition: all 0.2s ease-in-out;
         }
 
         .home-icon-link:hover {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
-            background-color: rgba(255, 255, 255, 0.9); /* Less transparent on hover */
-            transform: translateY(-2px); /* Slight lift effect on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
         }
 
         .home-icon-link img {
-            width: 15px; /* Home icon size - UPDATED TO 15PX */
-            height: 15px; /* Home icon size - UPDATED TO 15PX */
-            display: block; /* Removes extra space below the image */
+            width: 15px; /* Home icon size */
+            height: 15px; /* Home icon size */
+            display: block;
             filter: brightness(0); /* Makes the PNG black if it's not already */
         }
 
-        /* Styles for the main contact line block */
+        /* Styles for the main contact line block (Cout@nche.uk, phone numbers, etc.) */
         .main-contact-details {
-            /* No need for font-family here, it will inherit from body */
-            font-size: 24px; /* This keeps the text large */
+            font-family: "Courier New", Courier, monospace; /* Redundant but explicit for this line */
+            font-size: 20px; /* Explicitly 24px, matching body */
             height: 100%; /* Be cautious with height:100% on elements unless container has defined height */
-            margin: 0; /* Resets outer margin */
-            padding: 0; /* Resets inner padding */
-            text-align: center; /* Centers the groups horizontally within the line */
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Centers text within this block, as requested */
+            white-space: nowrap; /* Prevents wrapping within the contact line */
             display: flex; /* Uses Flexbox to align contact groups horizontally */
             justify-content: center; /* Centers the groups horizontally within the line */
             align-items: center; /* Vertically aligns all items (text, icons, separators) */
@@ -58,9 +78,6 @@
             margin-top: 50px; /* Adjusted margin to account for home icon at top */
             margin-bottom: 10px; /* Add some space below the line */
         }
-        /* NOTE: I removed font-family from .main-contact-details as it will now inherit from body.
-           If you want .main-contact-details to specifically be Courier New, it's fine to leave it.
-           If you want ALL text on the page to be Courier New, setting it on body is enough. */
 
         /* Styles for each individual contact detail group (e.g., "Email + icon", "Phone + icons") */
         .contact-detail-group {
@@ -71,34 +88,37 @@
 
         /* Styles for icons linked on the left of text */
         .icon-link-left {
-            display: flex; /* Use flex to align the image vertically within the link */
+            display: flex;
             align-items: center;
-            margin-right: 5px; /* Space between the icon and the text/next icon */
-            text-decoration: none; /* Removes any underline from the link */
+            margin-right: 5px;
             line-height: 0; /* Helps with precise vertical alignment of the icon */
         }
 
-        /* Styles for icons linked on the right of text (like the SMS icon) */
+        /* Styles for icons linked on the right of text */
         .icon-link-right {
-            display: flex; /* Use flex to align the image vertically within the link */
+            display: flex;
             align-items: center;
-            margin-left: 5px; /* Space between the text/previous icon and this icon */
-            text-decoration: none; /* Removes any underline from the link */
+            margin-left: 5px;
             line-height: 0; /* Helps with precise vertical alignment of the icon */
         }
 
         /* General styles for all icons within the contact details */
         .main-contact-details img {
-            width: 15px; /* General icon size - UPDATED TO 15PX */
-            height: 15px; /* General icon size - UPDATED TO 15PX */
-            filter: brightness(0); /* Attempts to make icons black. This works well on SVGs and often on colored PNGs. */
+            width: 15px; /* General icon size */
+            height: 15px; /* General icon size */
+            filter: brightness(0); /* Makes the PNG black if it's not already */
         }
 
         /* Styles for the "|" separators */
         .separator-icon {
-            display: inline-block; /* Allows vertical alignment and margins */
-            margin: 0 10px; /* Adds horizontal space around the '|' */
-            vertical-align: middle; /* Aligns the '|' vertically with the content */
+            display: inline-block;
+            margin: 0 10px;
+            vertical-align: middle;
+        }
+
+        /* The Summary heading and its content will inherit font-family and font-size from body */
+        .summary-heading {
+            /* No specific font properties needed here unless you want to override body's inherited style */
         }
     </style>
 </head>
