@@ -1,196 +1,129 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <title>Peter Coutanche - About Me</title>
-        <!-- Favicon links - Corrected to absolute URLs for GitHub Pages custom domain -->
-    <!-- End of Favicon links -->
+<head>
+    <title>About Me - Peter Coutanche</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-      /* Universal box-sizing for consistent layout */
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        height: 100%;
-      }
-      body {
-        font-family: "Courier New", "Courier", monospace;
-        font-size: 18px; /* Base font size for readability */
-        line-height: 1.6; /* Spacing between lines of text */
-        margin: 0;
-        padding: 40px; /* Padding around the entire content */
-        background-color: #f8f8f8; /* Light background color */
-        color: #333; /* Default text color */
-      }
-
-      /* Specific styling for alignment classes, overriding inline styles where necessary */
-      .text-right {
-        text-align: right;
-      }
-      .text-center {
-        text-align: center;
-      }
-      .text-left {
-        text-align: left;
-      }
-
-      /* Styling for horizontal rules */
-      hr {
-        border: none;
-        border-top: 1px solid #ccc; /* Thin grey line */
-        margin: 20px 0; /* Vertical spacing around the line */
-      }
-
-      /* Styling for unordered lists */
-      ul {
-        list-style-type: disc; /* Standard disc bullets */
-        margin-left: 20px; /* Indent lists */
-        padding-left: 0;
-      }
-      ul li {
-        margin-bottom: 8px; /* Space between list items */
-      }
-
-      /* Styling for strong/bold text */
-      strong {
-        font-weight: bold;
-      }
-
-      /* Responsive adjustments for smaller screens */
-      @media (max-width: 768px) {
+        /* General Body Styles */
         body {
-          font-size: 16px;
-          padding: 20px;
+            font-family: "Courier New", "Courier", monospace;
+            color: #333;
+            margin: 0; /* Remove default body margin */
+            padding: 20px; /* Add some padding around the content */
+            position: relative; /* Needed for absolute positioning of home icon if body is its container */
         }
-      }
 
-      @media (max-width: 480px) {
-        body {
-          font-size: 15px;
-          padding: 15px;
+        /* Home Icon Link Style */
+        .home-icon-link {
+            position: absolute; /* Positions the icon relative to the closest positioned ancestor (body in this case) */
+            top: 20px; /* Distance from the top edge */
+            left: 20px; /* Distance from the left edge */
+            display: block; /* Ensures the link behaves like a block for padding/border */
+            padding: 8px; /* Space inside the box around the icon */
+            border: 1px solid rgba(0, 0, 0, 0.1); /* Very subtle light gray border */
+            border-radius: 5px; /* Slightly rounded corners for the box */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Very subtle shadow for depth */
+            background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
+            z-index: 1000; /* Ensures the icon stays on top of other content */
+            text-decoration: none; /* Removes any underline from the link */
+            transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
         }
-      }
-      /* Styles for the contact line with inline icons */
-/* Styles for the entire contact line block */
-.main-contact-details {
-  text-align: center; /* Centers the whole line of content */
-  font-family: "Courier New", "Courier", monospace; /* Ensures consistent font */
-  font-size: 24px; /* Ensures consistent font size */
-  display: flex; /* Uses Flexbox to align contact groups horizontally */
-  justify-content: center; /* Centers the groups horizontally within the line */
-  align-items: center; /* Vertically aligns all items (text, icons, separators) */
-  flex-wrap: wrap; /* Allows the line to wrap onto multiple lines on smaller screens */
-  margin-top: 10px; /* Add some space above the line */
-  margin-bottom: 10px; /* Add some space below the line */
-}
 
-/* Styles for each individual contact detail group (e.g., "Email + icon", "Phone + icons") */
-.contact-detail-group {
-  display: inline-flex; /* Keeps text and icon(s) together on one line within the group */
-  align-items: center; /* Vertically centers content within the group */
-  white-space: nowrap; /* Prevents wrapping within a group */
-}
+        .home-icon-link:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
+            background-color: rgba(255, 255, 255, 0.9); /* Less transparent on hover */
+            transform: translateY(-2px); /* Slight lift effect on hover */
+        }
 
-/* Styles for icons linked on the left of text */
-.icon-link-left {
-  display: flex; /* Use flex to align the image vertically within the link */
-  align-items: center;
-  margin-right: 5px; /* Space between the icon and the text/next icon */
-  text-decoration: none; /* Removes any underline from the link */
-  line-height: 0; /* Helps with precise vertical alignment of the icon */
-}
+        .home-icon-link img {
+            width: 15px; /* Home icon size - UPDATED TO 15PX */
+            height: 15px; /* Home icon size - UPDATED TO 15PX */
+            display: block; /* Removes extra space below the image */
+            filter: brightness(0); /* Makes the PNG black if it's not already */
+        }
 
-/* Styles for icons linked on the right of text (like the SMS icon) */
-.icon-link-right {
-  display: flex; /* Use flex to align the image vertically within the link */
-  align-items: center;
-  margin-left: 5px; /* Space between the text/previous icon and this icon */
-  text-decoration: none; /* Removes any underline from the link */
-  line-height: 0; /* Helps with precise vertical alignment of the icon */
-}
+        /* Styles for the main contact line block */
+        .main-contact-details {
+            text-align: center; /* Centers the whole line of content */
+            font-family: "Courier New", "Courier", monospace; /* Ensures consistent font */
+            font-size: 24px; /* Ensures consistent font size */
+            display: flex; /* Uses Flexbox to align contact groups horizontally */
+            justify-content: center; /* Centers the groups horizontally within the line */
+            align-items: center; /* Vertically aligns all items (text, icons, separators) */
+            flex-wrap: wrap; /* Allows the line to wrap onto multiple lines on smaller screens */
+            margin-top: 50px; /* Adjusted margin to account for home icon at top */
+            margin-bottom: 10px; /* Add some space below the line */
+        }
 
-/* General styles for all images within the contact details */
-.main-contact-details img {
-  width: 15px; /* Sets a consistent small size for all icons */
-  height: 15px;
-  filter: brightness(0); /* Attempts to make icons black. This works well on SVGs and often on colored PNGs. */
-}
+        /* Styles for each individual contact detail group (e.g., "Email + icon", "Phone + icons") */
+        .contact-detail-group {
+            display: inline-flex; /* Keeps text and icon(s) together on one line within the group */
+            align-items: center; /* Vertically centers content within the group */
+            white-space: nowrap; /* Prevents wrapping within a group */
+        }
 
-/* Styles for the "|" separators */
-.separator-icon {
-  display: inline-block; /* Allows vertical alignment and margins */
-  margin: 0 10px; /* Adds horizontal space around the '|' */
-  vertical-align: middle; /* Aligns the '|' vertically with the content */
-}
-/* Removes underline from icon links and helps with vertical alignment */
-.contact-group a {
-  text-decoration: none; /* No underline on icon links */
-  line-height: 0; /* Helps align the icon vertically with the text */
-  display: inline-flex; /* Ensures the link doesn't take up full width */
-  align-items: center; /* Vertically centers the image within the link */
-}
-  /* Style for the Home Icon Link */
-.home-icon-link {
-    position: absolute; /* Positions the icon relative to the closest positioned ancestor, or the viewport */
-    top: 20px; /* Distance from the top edge */
-    left: 20px; /* Distance from the left edge */
-    display: block; /* Ensures the link behaves like a block for padding/border */
-    padding: 8px; /* Space inside the box around the icon */
-    border: 1px solid rgba(0, 0, 0, 0.1); /* Very subtle light gray border */
-    border-radius: 5px; /* Slightly rounded corners for the box */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Very subtle shadow for depth */
-    background-color: rgba(255, 255, 255, 0.7); /* Slightly transparent white background */
-    z-index: 1000; /* Ensures the icon stays on top of other content */
-    text-decoration: none; /* Removes any underline from the link */
-    transition: all 0.2s ease-in-out; /* Smooth transition for hover effects */
-}
+        /* Styles for icons linked on the left of text */
+        .icon-link-left {
+            display: flex; /* Use flex to align the image vertically within the link */
+            align-items: center;
+            margin-right: 5px; /* Space between the icon and the text/next icon */
+            text-decoration: none; /* Removes any underline from the link */
+            line-height: 0; /* Helps with precise vertical alignment of the icon */
+        }
 
-/* Hover effect for the Home Icon */
-.home-icon-link:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
-    background-color: rgba(255, 255, 255, 0.9); /* Less transparent on hover */
-    transform: translateY(-2px); /* Slight lift effect on hover */
-}
+        /* Styles for icons linked on the right of text (like the SMS icon) */
+        .icon-link-right {
+            display: flex; /* Use flex to align the image vertically within the link */
+            align-items: center;
+            margin-left: 5px; /* Space between the text/previous icon and this icon */
+            text-decoration: none; /* Removes any underline from the link */
+            line-height: 0; /* Helps with precise vertical alignment of the icon */
+        }
 
-/* Style for the actual home image within the link */
-.home-icon-link img {
-    width: 30px; /* Size of the home icon (adjust as desired) */
-    height: 30px;
-    display: block; /* Removes extra space below the image */
-    filter: brightness(0); /* Makes the PNG black if it's not already */
-}
+        /* General styles for all icons within the contact details */
+        .main-contact-details img {
+            width: 15px; /* General icon size - UPDATED TO 15PX */
+            height: 15px; /* General icon size - UPDATED TO 15PX */
+            filter: brightness(0); /* Attempts to make icons black. This works well on SVGs and often on colored PNGs. */
+        }
+
+        /* Styles for the "|" separators */
+        .separator-icon {
+            display: inline-block; /* Allows vertical alignment and margins */
+            margin: 0 10px; /* Adds horizontal space around the '|' */
+            vertical-align: middle; /* Aligns the '|' vertically with the content */
+        }
     </style>
-  </head>
-  <body>
-        <a href="../" class="home-icon-link">
+</head>
+<body>
+    <a href="../" class="home-icon-link">
         <img src="../images/home.png" alt="Home Icon">
     </a>
-  <p style="text-align: right;"><strong>Peter Coutanche</strong></p>
-<p class="main-contact-details">
-  <strong>
-    <span class="contact-detail-group">
-      <a href="mailto:Cout@nche.uk" class="icon-link-left"><img src="../images/email.png" alt="Email Icon"></a>
-      Cout@nche.uk
-    </span>
-    <span class="separator-icon">|</span>
-    <span class="contact-detail-group">
-      <a href="tel:+34711099911" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
-      +34 711 099 911
-      <a href="sms:+34711099911" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
-    </span>
-    <span class="separator-icon">|</span>
-    <span class="contact-detail-group">
-      <a href="tel:+447444799704" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
-      +44 744 479 9704
-      <a href="sms:+447444799704" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
-    </span>
-  </strong>
-</p>
-<hr />
+
+    <p style="text-align: right;"><strong>Peter Coutanche</strong></p>
+
+    <p class="main-contact-details">
+      <strong>
+        <span class="contact-detail-group">
+          <a href="mailto:Cout@nche.uk" class="icon-link-left"><img src="../images/email.png" alt="Email Icon"></a>
+          Cout@nche.uk
+        </span>
+        <span class="separator-icon">|</span>
+        <span class="contact-detail-group">
+          <a href="tel:+34711099911" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
+          +34 711 099 911
+          <a href="sms:+34711099911" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
+        </span>
+        <span class="separator-icon">|</span>
+        <span class="contact-detail-group">
+          <a href="tel:+447444799704" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
+          +44 744 479 9704
+          <a href="sms:+447444799704" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
+        </span>
+      </strong>
+    </p>
+    <hr />
 <p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
   </strong>
 </p>
