@@ -5,6 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* General Body Styles - ENSURES FONT CONSISTENCY ACROSS THE PAGE */
+        body {
+            font-family: "Courier New", Courier, monospace; /* This line makes the font consistent */
+            color: #333; /* Default text color, adjust if needed */
+            margin: 0; /* Removes default browser margin around the page */
+            padding: 20px; /* Adds spacing around the content */
+            position: relative; /* Necessary for absolute positioning of the home icon */
+        }
+
         /* Home Icon Link Style */
         .home-icon-link {
             position: absolute; /* Positions the icon relative to the closest positioned ancestor (body in this case) */
@@ -36,12 +45,12 @@
 
         /* Styles for the main contact line block */
         .main-contact-details {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 24px;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-size: 24px; /* Ensures consistent font size */
+            /* No need for font-family here, it will inherit from body */
+            font-size: 24px; /* This keeps the text large */
+            height: 100%; /* Be cautious with height:100% on elements unless container has defined height */
+            margin: 0; /* Resets outer margin */
+            padding: 0; /* Resets inner padding */
+            text-align: center; /* Centers the groups horizontally within the line */
             display: flex; /* Uses Flexbox to align contact groups horizontally */
             justify-content: center; /* Centers the groups horizontally within the line */
             align-items: center; /* Vertically aligns all items (text, icons, separators) */
@@ -49,6 +58,9 @@
             margin-top: 50px; /* Adjusted margin to account for home icon at top */
             margin-bottom: 10px; /* Add some space below the line */
         }
+        /* NOTE: I removed font-family from .main-contact-details as it will now inherit from body.
+           If you want .main-contact-details to specifically be Courier New, it's fine to leave it.
+           If you want ALL text on the page to be Courier New, setting it on body is enough. */
 
         /* Styles for each individual contact detail group (e.g., "Email + icon", "Phone + icons") */
         .contact-detail-group {
