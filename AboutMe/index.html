@@ -74,11 +74,64 @@
           padding: 15px;
         }
       }
+      /* Styles for the contact line with inline icons */
+.contact-line-with-icons {
+  text-align: center; /* Keeps the entire line centered */
+}
+
+.contact-group {
+  display: inline-flex; /* Allows text and icons to sit side-by-side */
+  align-items: center; /* Vertically aligns items (text and icons) within the group */
+  gap: 5px; /* Creates a small gap between the text and the first icon, and between icons */
+}
+
+/* Style for the pipe separators between contact groups */
+.separator {
+  display: inline-block; /* Allows margins and vertical alignment */
+  margin: 0 10px; /* Adds horizontal space around the '|' */
+  vertical-align: middle; /* Aligns the '|' vertically with the content */
+}
+
+/* Styles for the images within the contact groups */
+.contact-group img {
+  width: 20px; /* Sets the icon width */
+  height: 20px; /* Sets the icon height */
+  filter: brightness(0); /* Makes the SVG icons black */
+}
+
+/* Removes underline from icon links and helps with vertical alignment */
+.contact-group a {
+  text-decoration: none; /* No underline on icon links */
+  line-height: 0; /* Helps align the icon vertically with the text */
+  display: inline-flex; /* Ensures the link doesn't take up full width */
+  align-items: center; /* Vertically centers the image within the link */
+}
     </style>
   </head>
   <body>
     <p style="text-align: right;"><strong>Peter Coutanche</strong></p>
-    <p style="text-align: center;"><strong>Cout@nche.uk | +34 711 099 911 | +44 744 479 9704</strong></p>
+<p class="contact-line-with-icons">
+  <strong>
+    <span class="contact-group">
+      Cout@nche.uk
+      <a href="mailto:Cout@nche.uk"><img src="images/email.svg" alt="Email"></a>
+    </span>
+    <span class="separator">|</span>
+    <span class="contact-group">
+      +34 711 099 911
+      <a href="tel:+34711099911"><img src="images/cellphone-wireless.svg" alt="Phone"></a>
+      <a href="sms:+34711099911"><img src="images/message-processing.svg" alt="SMS"></a>
+    </span>
+    <span class="separator">|</span>
+    <span class="contact-group">
+      +44 744 479 9704
+      <a href="tel:+447444799704"><img src="images/cellphone-wireless.svg" alt="Phone"></a>
+      <a href="sms:+447444799704"><img src="images/message-processing.svg" alt="SMS"></a>
+    </span>
+  </strong>
+</p>
+<hr />
+<p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
     <hr />
     <p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
     <p><strong>A dynamic Public Relations and Communications professional </strong>with a proven track record in digital strategy and media engagement. Expert in crafting compelling narratives, building relationships, delivering high-impact campaigns. Specialises in providing journalists with valuable insights and stories&mdash;spanning data-driven analysis, expert commentary, and reactive responses&mdash;for both B2B and B2C news. Exceptionally proficient across a wide spectrum of digital tools and platforms.</p>
