@@ -75,30 +75,57 @@
         }
       }
       /* Styles for the contact line with inline icons */
-.contact-line-with-icons {
-  text-align: center; /* Keeps the entire line centered */
+/* Styles for the entire contact line block */
+.main-contact-details {
+  text-align: center; /* Centers the whole line of content */
+  font-family: "Courier New", "Courier", monospace; /* Ensures consistent font */
+  font-size: 24px; /* Ensures consistent font size */
+  display: flex; /* Uses Flexbox to align contact groups horizontally */
+  justify-content: center; /* Centers the groups horizontally within the line */
+  align-items: center; /* Vertically aligns all items (text, icons, separators) */
+  flex-wrap: wrap; /* Allows the line to wrap onto multiple lines on smaller screens */
+  margin-top: 10px; /* Add some space above the line */
+  margin-bottom: 10px; /* Add some space below the line */
 }
 
-.contact-group {
-  display: inline-flex; /* Allows text and icons to sit side-by-side */
-  align-items: center; /* Vertically aligns items (text and icons) within the group */
-  gap: 5px; /* Creates a small gap between the text and the first icon, and between icons */
+/* Styles for each individual contact detail group (e.g., "Email + icon", "Phone + icons") */
+.contact-detail-group {
+  display: inline-flex; /* Keeps text and icon(s) together on one line within the group */
+  align-items: center; /* Vertically centers content within the group */
+  white-space: nowrap; /* Prevents wrapping within a group */
 }
 
-/* Style for the pipe separators between contact groups */
-.separator {
-  display: inline-block; /* Allows margins and vertical alignment */
+/* Styles for icons linked on the left of text */
+.icon-link-left {
+  display: flex; /* Use flex to align the image vertically within the link */
+  align-items: center;
+  margin-right: 5px; /* Space between the icon and the text/next icon */
+  text-decoration: none; /* Removes any underline from the link */
+  line-height: 0; /* Helps with precise vertical alignment of the icon */
+}
+
+/* Styles for icons linked on the right of text (like the SMS icon) */
+.icon-link-right {
+  display: flex; /* Use flex to align the image vertically within the link */
+  align-items: center;
+  margin-left: 5px; /* Space between the text/previous icon and this icon */
+  text-decoration: none; /* Removes any underline from the link */
+  line-height: 0; /* Helps with precise vertical alignment of the icon */
+}
+
+/* General styles for all images within the contact details */
+.main-contact-details img {
+  width: 20px; /* Sets a consistent small size for all icons */
+  height: 20px;
+  filter: brightness(0); /* Attempts to make icons black. This works well on SVGs and often on colored PNGs. */
+}
+
+/* Styles for the "|" separators */
+.separator-icon {
+  display: inline-block; /* Allows vertical alignment and margins */
   margin: 0 10px; /* Adds horizontal space around the '|' */
   vertical-align: middle; /* Aligns the '|' vertically with the content */
 }
-
-/* Styles for the images within the contact groups */
-.contact-group img {
-  width: 20px; /* Sets the icon width */
-  height: 20px; /* Sets the icon height */
-  filter: brightness(0); /* Makes the SVG icons black */
-}
-
 /* Removes underline from icon links and helps with vertical alignment */
 .contact-group a {
   text-decoration: none; /* No underline on icon links */
@@ -109,29 +136,31 @@
     </style>
   </head>
   <body>
-    <p style="text-align: right;"><strong>Peter Coutanche</strong></p>
-<p class="contact-line-with-icons">
+  <p style="text-align: right;"><strong>Peter Coutanche</strong></p>
+<p class="main-contact-details">
   <strong>
-    <span class="contact-group">
+    <span class="contact-detail-group">
+      <a href="mailto:Cout@nche.uk" class="icon-link-left"><img src="../images/email.png" alt="Email Icon"></a>
       Cout@nche.uk
-      <a href="mailto:Cout@nche.uk"><img src="images/email.svg" alt="Email"></a>
     </span>
-    <span class="separator">|</span>
-    <span class="contact-group">
+    <span class="separator-icon">|</span>
+    <span class="contact-detail-group">
+      <a href="tel:+34711099911" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
       +34 711 099 911
-      <a href="tel:+34711099911"><img src="images/cellphone-wireless.svg" alt="Phone"></a>
-      <a href="sms:+34711099911"><img src="images/message-processing.svg" alt="SMS"></a>
+      <a href="sms:+34711099911" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
     </span>
-    <span class="separator">|</span>
-    <span class="contact-group">
+    <span class="separator-icon">|</span>
+    <span class="contact-detail-group">
+      <a href="tel:+447444799704" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
       +44 744 479 9704
-      <a href="tel:+447444799704"><img src="images/cellphone-wireless.svg" alt="Phone"></a>
-      <a href="sms:+447444799704"><img src="images/message-processing.svg" alt="SMS"></a>
+      <a href="sms:+447444799704" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
     </span>
   </strong>
 </p>
 <hr />
 <p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
+  </strong>
+</p>
     <hr />
     <p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
     <p><strong>A dynamic Public Relations and Communications professional </strong>with a proven track record in digital strategy and media engagement. Expert in crafting compelling narratives, building relationships, delivering high-impact campaigns. Specialises in providing journalists with valuable insights and stories&mdash;spanning data-driven analysis, expert commentary, and reactive responses&mdash;for both B2B and B2C news. Exceptionally proficient across a wide spectrum of digital tools and platforms.</p>
