@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        /* General Body Styles - Sets "Courier New" at 24px as the global default font */
         body {
             font-family: "Courier New", Courier, monospace;
-            font-size: 15px; /* Global default font size */
+            font-size: 20px; /* Global default font size */
             color: #333; /* Default text color */
             margin: 0; /* Removes default browser margin */
             padding: 20px; /* Adds padding around the page content */
             position: relative; /* Necessary for absolute positioning of the home icon */
             text-align: left; /* Default text alignment for the page, overridden for specific elements */
+            line-height: 1.6; /* ADDED: Improves readability by increasing vertical spacing between lines */
         }
 
         /* Apply box-sizing globally for consistent element sizing */
@@ -23,15 +25,28 @@
         /* Styles for all links to remove underlines and inherit color */
         a {
             text-decoration: none;
-            color: inherit;
+            color: inherit; /* Links will get the body's text color */
         }
 
+        /* New container for main content to limit line length for better readability */
+        .content-container {
+            max-width: 800px; /* Adjust this value to control line length (e.g., 600px-800px is common) */
+            margin: 0 auto; /* Centers the container on the page */
+            padding-top: 20px; /* Adds space at the top so content doesn't hit home icon */
+            /* This div will wrap all main text content, including your name, contact, and summary */
+        }
+
+        /* Add spacing between paragraphs for better segmentation */
+        p {
+            margin-bottom: 1em; /* ADDED: Adds space below each paragraph */
+        }
+
+        /* Style for Peter Coutanche text - This remains right-aligned. Font-size inherits from body. */
         .name-header {
             text-align: right;
-            font-size: 15px; -- REMOVED to keep all text sizes the same as body (24px) */
-            line-height: 1.2;
-            margin-bottom: 5px;
-            /* Font-family, font-size, and color will now inherit from the body */
+            line-height: 1.2; /* Can be slightly tighter for headings */
+            margin-bottom: 5px; /* Less space below heading than regular paragraphs */
+            /* Font-family, font-size, and color will inherit from the body */
         }
 
         /* Home Icon Link Style */
@@ -39,7 +54,7 @@
             position: absolute;
             top: 20px;
             left: 20px;
-            display: block; /* Ensures it takes up space for padding/border */
+            display: block;
             padding: 8px;
             border: 1px solid rgba(0, 0, 0, 0.1);
             border-radius: 5px;
@@ -56,34 +71,34 @@
         }
 
         .home-icon-link img {
-            width: 15px; /* Home icon size */
-            height: 15px; /* Home icon size */
+            width: 15px;
+            height: 15px;
             display: block;
-            filter: brightness(0); /* Makes the PNG black if it's not already */
+            filter: brightness(0);
         }
 
         /* Styles for the main contact line block (Cout@nche.uk, phone numbers, etc.) */
         .main-contact-details {
             font-family: "Courier New", Courier, monospace; /* Redundant but explicit for this line */
-            font-size: 20px; /* Explicitly 24px, matching body */
-            height: 100%; /* Be cautious with height:100% on elements unless container has defined height */
-            margin: 0;
+            font-size: 24px; /* Explicitly 24px, matching body */
+            /* height: 100%; - This property might cause issues within a flex container, consider removing if layout problems occur */
+            margin: 0; /* Override default paragraph margin */
             padding: 0;
-            text-align: center; /* Centers text within this block, as requested */
-            white-space: nowrap; /* Prevents wrapping within the contact line */
-            display: flex; /* Uses Flexbox to align contact groups horizontally */
-            justify-content: center; /* Centers the groups horizontally within the line */
-            align-items: center; /* Vertically aligns all items (text, icons, separators) */
-            flex-wrap: wrap; /* Allows the line to wrap onto multiple lines on smaller screens */
+            text-align: center; /* Centers text within this block */
+            white-space: nowrap; /* Prevents wrapping within the contact line itself */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             margin-top: 50px; /* Adjusted margin to account for home icon at top */
-            margin-bottom: 10px; /* Add some space below the line */
+            margin-bottom: 10px; /* Less space below contact line */
         }
 
-        /* Styles for each individual contact detail group (e.g., "Email + icon", "Phone + icons") */
+        /* Styles for each individual contact detail group */
         .contact-detail-group {
-            display: inline-flex; /* Keeps text and icon(s) together on one line within the group */
-            align-items: center; /* Vertically centers content within the group */
-            white-space: nowrap; /* Prevents wrapping within a group */
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
         }
 
         /* Styles for icons linked on the left of text */
@@ -91,7 +106,7 @@
             display: flex;
             align-items: center;
             margin-right: 5px;
-            line-height: 0; /* Helps with precise vertical alignment of the icon */
+            line-height: 0;
         }
 
         /* Styles for icons linked on the right of text */
@@ -99,14 +114,14 @@
             display: flex;
             align-items: center;
             margin-left: 5px;
-            line-height: 0; /* Helps with precise vertical alignment of the icon */
+            line-height: 0;
         }
 
         /* General styles for all icons within the contact details */
         .main-contact-details img {
-            width: 15px; /* General icon size */
-            height: 15px; /* General icon size */
-            filter: brightness(0); /* Makes the PNG black if it's not already */
+            width: 15px;
+            height: 15px;
+            filter: brightness(0);
         }
 
         /* Styles for the "|" separators */
@@ -116,34 +131,42 @@
             vertical-align: middle;
         }
 
-        /* The Summary heading and its content will inherit font-family and font-size from body */
+        /* The Summary heading will inherit font-family and font-size from body */
         .summary-heading {
             /* No specific font properties needed here unless you want to override body's inherited style */
         }
     </style>
 </head>
 <body>
-    <a href="../" class="home-icon-link"><img src="../images/home.png" alt="Home Icon"> </a>
-    <p style="text-align: right;"><strong>Peter Coutanche</strong></p>
-    <p class="main-contact-details">
-      <strong>
-        <span class="contact-detail-group">
-          <a href="mailto:Cout@nche.uk" class="icon-link-left"><img src="../images/email.png" alt="Email Icon"></a>
-          Cout@nche.uk
-        </span>
-        <span class="separator-icon">|</span>
-        <span class="contact-detail-group">
-          <a href="tel:+34711099911" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
-          +34 711 099 911
-          <a href="sms:+34711099911" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
-        </span>
-        <span class="separator-icon">|</span>
-        <span class="contact-detail-group">
-          <a href="tel:+447444799704" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
-          +44 744 479 9704
-          <a href="sms:+447444799704" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
-        </span>
-      </strong>
+    <a href="../" class="home-icon-link">
+        <img src="../images/home.png" alt="Home Icon">
+    </a>
+
+    <div class="content-container">
+        <p class="name-header"><strong>Peter Coutanche</strong></p>
+
+        <p class="main-contact-details">
+          <strong>
+            <span class="contact-detail-group">
+              <a href="mailto:Cout@nche.uk" class="icon-link-left"><img src="../images/email.png" alt="Email Icon"></a>
+              Cout@nche.uk
+            </span>
+            <span class="separator-icon">|</span>
+            <span class="contact-detail-group">
+              <a href="tel:+34711099911" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
+              +34 711 099 911
+              <a href="sms:+34711099911" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
+            </span>
+            <span class="separator-icon">|</span>
+            <span class="contact-detail-group">
+              <a href="tel:+447444799704" class="icon-link-left"><img src="../images/cellphone-wireless.png" alt="Phone Icon"></a>
+              +44 744 479 9704
+              <a href="sms:+447444799704" class="icon-link-right"><img src="../images/message-processing.png" alt="SMS Icon"></a>
+            </span>
+          </strong>
+        </p>
+        <hr />
+        <p style="text-align: left;">&gt;&gt;<span style="color: #003366;" class="summary-heading"><strong>Summary</strong></span></p>
     </p>
     <hr />
     <p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
