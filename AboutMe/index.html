@@ -8,13 +8,13 @@
         /* General Body Styles - Sets "Courier New" at 24px as the global default font */
         body {
             font-family: "Courier New", Courier, monospace;
-            font-size: 24px; /* Global default font size */
+            font-size: 15px; /* Global default font size */
             color: #333; /* Default text color */
             margin: 0; /* Removes default browser margin */
             padding: 20px; /* Adds padding around the page content */
             position: relative; /* Necessary for absolute positioning of the home icon */
             text-align: left; /* Default text alignment for the page, overridden for specific elements */
-            line-height: 1.6; /* Improves readability by increasing vertical spacing between lines */
+            line-height: 1.6; /* ADDED: Improves readability by increasing vertical spacing between lines */
         }
 
         /* Apply box-sizing globally for consistent element sizing */
@@ -33,11 +33,12 @@
             max-width: 800px; /* Adjust this value to control line length (e.g., 600px-800px is common) */
             margin: 0 auto; /* Centers the container on the page */
             padding-top: 20px; /* Adds space at the top so content doesn't hit home icon */
+            /* This div will wrap all main text content, including your name, contact, and summary */
         }
 
         /* Add spacing between paragraphs for better segmentation */
         p {
-            margin-bottom: 1em; /* Adds space below each paragraph */
+            margin-bottom: 1em; /* ADDED: Adds space below each paragraph */
         }
 
         /* Style for Peter Coutanche text - This remains right-aligned. Font-size inherits from body. */
@@ -70,16 +71,16 @@
         }
 
         .home-icon-link img {
-            width: 15px; /* Home icon size */
-            height: 15px; /* Home icon size */
+            width: 15px;
+            height: 15px;
             display: block;
-            filter: brightness(0); /* Makes the PNG black if it's not already */
+            filter: brightness(0);
         }
 
         /* Styles for the main contact line block (Cout@nche.uk, phone numbers, etc.) */
         .main-contact-details {
             font-family: "Courier New", Courier, monospace; /* Redundant but explicit for this line */
-            font-size: 24px; /* Explicitly 24px, matching body */
+            font-size: 20px; /* Explicitly 24px, matching body */
             /* height: 100%; - This property might cause issues within a flex container, consider removing if layout problems occur */
             margin: 0; /* Override default paragraph margin */
             padding: 0;
@@ -96,7 +97,7 @@
         /* Styles for each individual contact detail group */
         .contact-detail-group {
             display: inline-flex;
-            align-items: center; /* Vertically centers content within the group */
+            align-items: center;
             white-space: nowrap;
         }
 
@@ -105,7 +106,7 @@
             display: flex;
             align-items: center;
             margin-right: 5px;
-            line-height: 0; /* Helps with precise vertical alignment of the icon */
+            line-height: 0;
         }
 
         /* Styles for icons linked on the right of text */
@@ -113,24 +114,24 @@
             display: flex;
             align-items: center;
             margin-left: 5px;
-            line-height: 0; /* Helps with precise vertical alignment of the icon */
+            line-height: 0;
         }
 
         /* General styles for all icons within the contact details */
         .main-contact-details img {
-            width: 15px; /* General icon size */
-            height: 15px; /* General icon size */
-            filter: brightness(0); /* Makes the PNG black if it's not already */
+            width: 15px;
+            height: 15px;
+            filter: brightness(0);
         }
-
         /* Styles for the "|" separators */
         .separator-icon {
             display: inline-block;
-            font-size: 24px; /* Set font size to match surrounding text */
-            line-height: 1; /* Minimize extra space around the character */
-            vertical-align: -5px; /* ADJUSTED: Shift downwards by a few pixels for better alignment */
-            margin: 0 10px; /* Correct horizontal margins */
+            font-size: 24px;
+            line-height: 1;
+            vertical-align: -5px;
+            margin: 0 10px;
         }
+        
 
         /* The Summary heading will inherit font-family and font-size from body */
         .summary-heading {
@@ -167,10 +168,11 @@
           </strong>
         </p>
     <hr />
-    <p style="text-align: left;">&gt;&gt;<span style="color: #003366;"><strong>Summary</strong></span></p>
+    <p><strong>&gt;&gt;<span style="color: #003366; font-size: 20px;">Summary</span></strong></p>
+    
     <p><strong>A dynamic Public Relations and Communications professional </strong>with a proven track record in digital strategy and media engagement. Expert in crafting compelling narratives, building relationships, delivering high-impact campaigns. Specialises in providing journalists with valuable insights and stories&mdash;spanning data-driven analysis, expert commentary, and reactive responses&mdash;for both B2B and B2C news. Exceptionally proficient across a wide spectrum of digital tools and platforms.</p>
     <hr />
-    <p><strong>&gt;&gt;<span style="color: #003366;">Professional Experience</span></strong></p>
+    <p><strong>&gt;&gt;<span style="color: #003366; font-size: 20px;">Professional Experience</span></strong></p>
     <p><strong>Digital PR Executive</strong> | Search Intelligence LTD | 2023 &ndash; Present</p>
     <ul>
       <li><strong>Leading Digital PR campaigns &amp; initiatives</strong>, significantly boosting online visibility and brand presence for a diverse range of clients, with varying niches.</li>
@@ -188,7 +190,7 @@
       <li>Provided <strong>comprehensive digital support</strong>, including in-depth research, content management and organization, and regular technical assistance, including advanced troubleshooting.</li>
     </ul>
     <hr />
-    <p><strong>&gt;&gt;<span style="color: #003366;">Education</span></strong></p>
+    <p><strong>&gt;&gt;<span style="color: #003366; font-size: 20px;">Education</span></strong></p>
     <p><strong>MA Media, Culture and Society</strong> <strong>| | </strong>University of East Anglia <strong>| </strong>2020 (Transfer) &ndash; 2022</p>
     <ul>
       <li>Achieved <strong>Upper Second Class Honours (2:1)</strong></li>
@@ -199,7 +201,7 @@
       <li>Achieved <strong>Upper Second Class Honours (2:1)</strong></li>
     </ul>
     <hr />
-    <p><strong>&gt;&gt;<span style="color: #003366;">Skills</span></strong></p>
+    <p><strong>&gt;&gt;<span style="color: #003366; font-size: 20px;">Skills</span></strong></p>
     <ul>
       <li><strong>Digital &amp; Technical Mastery:</strong> Comprehensive knowledge of <strong>Digital PR platforms</strong>, advanced <strong>SEO strategies</strong>, <strong>social media management</strong> (content creation, analytics, engagement), robust <strong>data analysis</strong> (analytics, acripting, coding)</li>
       <li>Proficiency in <strong>Content Management Systems (CMS)</strong> and <strong>Customer Relationship Management (CRM)</strong> tools. Expert user of <strong>Office Suites</strong> (Microsoft / Google Word, Excel, PowerPoint, Outlook) for professional communication and data organization.</li>
@@ -209,12 +211,13 @@
       <li><strong>Creative &amp; Logistics:</strong> Audio Production, Event &amp; Personnel Logistics, Research &amp; Analysis, Advanced Troubleshooting.</li>
     </ul>
     <hr />
-    <p><strong>&gt;&gt;<span style="color: #003366;">Volunteer Contributions</span></strong></p>
+    <p><strong>&gt;&gt;<span style="color: #003366; font-size: 20px;">Volunteer Contributions</span></strong></p>
     <ul>
       <li><strong>Music Teacher | </strong>Holt Youth Project</li>
       <li><strong>Sound Technician, Artist Liaison</strong> <strong>| </strong>Latitude Festival (x2), Symmetry Festival, OxJam, Dubs at the Hall</li>
     </ul>
     <hr />
-    <p style="text-align: center;"><em>References &amp; Placements available upon request.</em></p>
+    <p style="text-align: center; font-size: 10px;"><em>References available upon request.</em></p>
+    </div>
   </body>
 </html>
