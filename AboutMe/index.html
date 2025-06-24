@@ -5,51 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* General Body Styles - Sets "Courier New" as the global default font */
         body {
             font-family: "Courier New", Courier, monospace;
-            font-size: 15px; /* Global default font size */
-            color: #333; /* Default text color */
-            margin: 0; /* Removes default browser margin */
-            padding: 20px; /* Adds padding around the page content */
-            position: relative; /* Necessary for absolute positioning of the home icon */
-            text-align: left; /* Default text alignment for the page, overridden for specific elements */
-            line-height: 1.6; /* Improves readability by increasing vertical spacing between lines */
+            font-size: 15px; 
+            color: #333; 
+            margin: 0;
+            padding: 20px;
+            position: relative;
+            text-align: left; 
+            line-height: 1.6;
         }
 
-        /* Apply box-sizing globally for consistent element sizing */
         *, *::before, *::after {
             box-sizing: border-box;
         }
 
-        /* Styles for all links to remove underlines and inherit color */
         a {
             text-decoration: none;
-            color: inherit; /* Links will get the body's text color */
+            color: inherit; 
         }
 
-        /* New container for main content to limit line length for better readability */
         .content-container {
-            max-width: 800px; /* Adjust this value to control line length (e.g., 600px-800px is common) */
-            margin: 0 auto; /* Centers the container on the page */
-            padding-top: 20px; /* Adds space at the top so content doesn't hit home icon */
+            max-width: 800px;
+            margin: 0 auto; 
+            padding-top: 20px;
         }
 
-        /* Add spacing between paragraphs for better segmentation */
-        p { /* Moved out of .content-container */
+       
+        p {
             margin-bottom: 1em;
         }
 
-        /* Style for Peter Coutanche text - This remains right-aligned. Font-size inherits from body. */
-        .name-header { /* Moved out of .content-container */
+       
+        .name-header {
             text-align: right;
             line-height: 1.2;
             margin-bottom: 5px;
-            /* Font-family, font-size, and color will inherit from the body */
         }
 
-        /* Home Icon Link Style */
-        .home-icon-link { /* Moved out of .content-container */
+        .home-icon-link { 
             position: absolute;
             top: 20px;
             left: 20px;
@@ -63,77 +57,64 @@
             transition: all 0.2s ease-in-out;
         }
 
-        .home-icon-link:hover { /* Moved out of .content-container */
+        .home-icon-link:hover {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background-color: rgba(255, 255, 255, 0.9);
             transform: translateY(-2px);
         }
 
-        .home-icon-link img { /* Moved out of .content-container */
-            width: 15px; /* Reverted to 15px as requested */
-            height: 15px; /* Reverted to 15px as requested */
+        .home-icon-link img { 
+            width: 15px;
+            height: 15px;
             display: block;
-            filter: brightness(0); /* Makes the PNG black if it's not already */
+            filter: brightness(0);
         }
 
-        /* Styles for the main contact line block (Cout@nche.uk, phone numbers, etc.) */
         .main-contact-details {
-            font-family: "Courier New", Courier, monospace; /* Redundant but explicit for this line */
-            font-size: 20px; /* Explicitly 20px for contact details */
-            margin: 0; /* Override default paragraph margin */
+            font-family: "Courier New", Courier, monospace;
+            font-size: 20px;
+            margin: 0;
             padding: 0;
-            text-align: center; /* Centers text within this block */
-            white-space: nowrap; /* Prevents wrapping within the contact line itself */
+            text-align: center;
+            white-space: nowrap; 
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            margin-top: 50px; /* Adjusted margin to account for home icon at top */
-            margin-bottom: 5px; /* Less space below contact line */
+            margin-top: 50px;
+            margin-bottom: 5px;
         }
-
-        /* Styles for each individual contact detail group */
         .contact-detail-group {
             display: inline-flex;
-            align-items: center; /* Vertically centers content within the group */
+            align-items: center;
             white-space: nowrap;
         }
 
-        /* Styles for icons linked on the left of text */
         .icon-link-left {
             display: flex;
             align-items: center;
             margin-right: 15px;
-            line-height: 0; /* Helps with precise vertical alignment of the icon */
+            line-height: 0;
         }
-
-        /* Styles for icons linked on the right of text */
         .icon-link-right {
             display: flex;
             align-items: center;
             margin-left: 15px;
-            line-height: 0; /* Helps with precise vertical alignment of the icon */
+            line-height: 0; 
         }
-
-        /* General styles for all icons within the contact details */
         .main-contact-details img {
-            width: 15px; /* General icon size */
-            height: 10px; /* General icon size */
-            filter: brightness(0); /* Makes the PNG black if it's not already */
+            width: 15px; 
+            height: 10px;
+            filter: brightness(0);
         }
-
-        /* Styles for the "|" separators */
         .separator-icon {
             display: inline-block;
-            font-size: 24px; /* Set font size to match surrounding text */
-            line-height: 1; /* Minimize extra space around the character */
-            vertical-align: 0px; /* Adjusted: Shift downwards by a few pixels for better alignment */
-            margin: 0 10px; /* Correct horizontal margins */
+            font-size: 24px; 
+            line-height: 1; 
+            vertical-align: 0px; 
+            margin: 0 10px;
         }
-
-        /* The Summary heading will inherit font-family and font-size from body */
         .summary-heading {
-            /* No specific font properties needed here unless you want to override body's inherited style */
         }
     </style>
 </head>
