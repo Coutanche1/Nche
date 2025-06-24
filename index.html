@@ -9,20 +9,25 @@
             box-sizing: border-box;
         }
 
-        html {
-            height: 100%;
-        }
+/* Base Styles (Mobile-First) */
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: "Courier New", Courier, monospace;
-            font-size: 18px; /* Base font size for smallest screens */
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            position: relative;
-            background-color: white;
-        }
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 18px; /* Base font size for smallest screens */
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /* Removed overflow: hidden; */
+    position: relative;
+    background-color: white;
+}
 
         .container {
             height: 100%;
